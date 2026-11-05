@@ -3,7 +3,6 @@ import { bootstrapAdmin, createDatabase } from "./db.js";
 import { createApp } from "./app.js";
 import { validateEmail, validatePassword } from "./validation.js";
 
-const db = createDatabase(process.env.DATABASE_PATH ?? "./data/risetti.sqlite");
 const adminEmail = process.env.ADMIN_EMAIL?.trim();
 const adminPassword = process.env.ADMIN_PASSWORD;
 const production = process.env.NODE_ENV === "production";
@@ -13,6 +12,7 @@ if (production && (!adminEmail || !adminPassword)) {
 if (production && process.env.COOKIE_SECURE !== "true") {
   throw new Error("COOKIE_SECURE=true wajib diatur untuk menjalankan mode production melalui HTTPS.");
 }
+const db = createDatabase(process.env.DATABASE_PATH ?? "./data/risetti.sqlite");
 if (adminEmail && adminPassword) {
   const email = validateEmail(adminEmail);
   const password = validatePassword(adminPassword);

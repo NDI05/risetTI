@@ -1,6 +1,6 @@
 import Database from "better-sqlite3";
 import { mkdir, readdir, stat, unlink } from "node:fs/promises";
-import { basename, resolve } from "node:path";
+import { resolve } from "node:path";
 
 const sourcePath = resolve(process.env.DATABASE_PATH ?? "./data/risetti.sqlite");
 if (process.env.DATABASE_PATH === ":memory:") throw new Error("Basis data in-memory tidak dapat dicadangkan.");
@@ -14,7 +14,7 @@ await mkdir(backupDirectory, { recursive: true });
 
 const timestamp = new Date().toISOString().replace(/[-:]/g, "").replace(/\.\d{3}Z$/, "Z");
 const destinationPath = resolve(backupDirectory, `risetti-${timestamp}.sqlite`);
-if (sourcePath === destinationPath || basename(sourcePath) === basename(destinationPath) && sourcePath === backupDirectory) {
+if (sourcePath === destinationPath) {
   throw new Error("Lokasi file backup tidak boleh sama dengan basis data aktif.");
 }
 

@@ -21,6 +21,10 @@
     "dotenv": "^16.6.1",
     "express": "^5.1.0"
   },
+  "overrides": {
+    "body-parser": "2.4.0",
+    "qs": "6.16.1"
+  },
   "devDependencies": {
     "@types/better-sqlite3": "^7.6.13",
     "@types/express": "^5.0.3",

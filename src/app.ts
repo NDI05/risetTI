@@ -141,7 +141,9 @@ export function createApp(options: AppOptions = {}) {
     res.setHeader("Content-Security-Policy", "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'");
     next();
   });
-  app.use(express.json({ limit: "64kb", strict: true }));
+  // API clients send small JSON documents; rejecting compressed bodies also
+  // avoids decompression risk and does not affect the browser application.
+  app.use(express.json({ limit: "64kb", strict: true, inflate: false }));
   app.use((req: AppRequest, _res, next) => {
     const rawToken = requestCookie(req);
     if (rawToken) {

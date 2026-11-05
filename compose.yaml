@@ -23,7 +23,7 @@ services:
       - backend
 
   ollama:
-    image: ${OLLAMA_IMAGE:-ollama/ollama:latest}
+    image: ${OLLAMA_IMAGE:-ollama/ollama:0.35.1}
     restart: unless-stopped
     expose:
       - "11434"
@@ -39,7 +39,7 @@ services:
       - backend
 
   ollama-model:
-    image: ${OLLAMA_IMAGE:-ollama/ollama:latest}
+    image: ${OLLAMA_IMAGE:-ollama/ollama:0.35.1}
     profiles: ["setup"]
     entrypoint: ["ollama", "pull"]
     command: ["${OLLAMA_MODEL:-gemma4:e2b-it-q4_K_M}"]
