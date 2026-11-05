@@ -1,0 +1,200 @@
+{"kind":"deck","id":"pr/npe6kb","name":"Deck"}
+{"kind":"layout","layoutId":"b1d19f1a-d431-4c1c-97e4-f937a5af3e8b","name":"Master","type":"master"}
+{"kind":"layout","layoutId":"9c54182f-50c0-43f3-8874-9c62d85bc63e","name":"Title Slide","type":"title"}
+{"kind":"slide","id":"sl/z9s5uh","slide":1,"title":"PROYEK PLATFORM WEBSITE","textShapes":6}
+{"kind":"textbox","id":"sh/y9c7mlgr","slide":1,"text":"PROYEK PLATFORM WEBSITE","textPreview":"PROYEK PLATFORM WEBSITE","textChars":23,"textLines":1,"bbox":[80,86,1060,32]}
+{"kind":"textbox","id":"sh/lc3qxgfi","slide":1,"text":"RISETTI","textPreview":"RISETTI","textChars":7,"textLines":1,"bbox":[80,178,1060,88]}
+{"kind":"shape","id":"sh/kbupobyx","slide":1,"bbox":[80,286,230,0]}
+{"kind":"textbox","id":"sh/7e58zqx8","slide":1,"text":"Perencanaan dan Inisiasi","textPreview":"Perencanaan dan Inisiasi","textChars":24,"textLines":1,"bbox":[80,322,1060,58]}
+{"kind":"textbox","id":"sh/6dc7qlg3","slide":1,"text":"Proses bisnis pencarian dan penyaringan ide tugas akhir mahasiswa TI","textPreview":"Proses bisnis pencarian dan penyaringan ide tugas akhir mahasiswa TI","textChars":68,"textLines":1,"bbox":[80,390,980,64]}
+{"kind":"textbox","id":"sh/t0nq10fe","slide":1,"text":"Anggota kelompok","textPreview":"Anggota kelompok","textChars":16,"textLines":1,"bbox":[80,555,240,26]}
+{"kind":"textbox","id":"sh/8zepsvet","slide":1,"text":"20240140037  ·  20240140125  ·  20240140005\n20240140031  ·  20240140025  ·  20240140154","textPreview":"20240140037  ·  20240140125  ·  20240140005 | 20240140031  ·  20240140025  ·  20240140154","textChars":87,"textLines":2,"bbox":[80,590,890,58]}
+{"kind":"notes","id":"nt/z9s5uh","slide":1,"text":"Presentasi ini merinci tahap perencanaan dan inisiasi untuk RisetTI. Fokus platform hanya pada pencarian referensi tugas akhir dan penyusunan informasi awal kelayakan ide."}
+{"kind":"slide","id":"sl/74t54u","slide":2,"title":"RISETTI  /  PERENCANAAN & INISIASI","textShapes":10}
+{"kind":"textbox","id":"sh/n2hcjq5k","slide":2,"text":"RISETTI  /  PERENCANAAN & INISIASI","textPreview":"RISETTI  /  PERENCANAAN & INISIASI","textChars":34,"textLines":1,"bbox":[70,30,620,22]}
+{"kind":"textbox","id":"sh/o3atcv65","slide":2,"text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[1160,30,50,22]}
+{"kind":"shape","id":"sh/94jul0nq","slide":2,"bbox":[70,62,1140,0]}
+{"kind":"textbox","id":"sh/ed8b6lo3","slide":2,"text":"Fokus produk dan tujuan","textPreview":"Fokus produk dan tujuan","textChars":23,"textLines":1,"bbox":[70,86,1140,58]}
+{"kind":"textbox","id":"sh/fyhsfq5o","slide":2,"text":"RisetTI membantu mahasiswa menemukan ide yang punya pijakan dan bisa diperiksa kelayakannya.","textPreview":"RisetTI membantu mahasiswa menemukan ide yang punya pijakan dan bisa diperiksa kelayakannya.","textChars":92,"textLines":1,"bbox":[70,164,1090,68]}
+{"kind":"shape","id":"sh/0zqt8v69","slide":2,"bbox":[70,252,1140,0]}
+{"kind":"textbox","id":"sh/10zuh0nu","slide":2,"text":"TUJUAN 1","textPreview":"TUJUAN 1","textChars":8,"textLines":1,"bbox":[70,282,180,28]}
+{"kind":"textbox","id":"sh/y9sbi5o7","slide":2,"text":"Menyediakan katalog tugas akhir yang dapat ditelusuri berdasarkan bidang, metode, teknologi, dan kata kunci.","textPreview":"Menyediakan katalog tugas akhir yang dapat ditelusuri berdasarkan bidang, metode, teknologi, dan kata kunci.","textChars":108,"textLines":1,"bbox":[70,318,510,126]}
+{"kind":"shape","id":"sh/julcra5s","slide":2,"bbox":[630,282,0,278]}
+{"kind":"textbox","id":"sh/rex4re9s","slide":2,"text":"TUJUAN 2","textPreview":"TUJUAN 2","textChars":8,"textLines":1,"bbox":[680,282,180,28]}
+{"kind":"textbox","id":"sh/qd43i987","slide":2,"text":"Membantu mahasiswa menyusun informasi awal serta mengidentifikasi kebutuhan dan risiko ide sebelum diajukan.","textPreview":"Membantu mahasiswa menyusun informasi awal serta mengidentifikasi kebutuhan dan risiko ide sebelum diajukan.","textChars":108,"textLines":1,"bbox":[680,318,510,126]}
+{"kind":"textbox","id":"sh/dgfmtory","slide":2,"text":"Batas fokus","textPreview":"Batas fokus","textChars":11,"textLines":1,"bbox":[70,500,180,26]}
+{"kind":"textbox","id":"sh/cf6lkjqd","slide":2,"text":"Katalog → telaah awal → shortlist ide. Platform berhenti sebelum pengajuan formal dan tidak mengelola progres tugas akhir.","textPreview":"Katalog → telaah awal → shortlist ide. Platform berhenti sebelum pengajuan formal dan tidak mengelola progres tugas akhir.","textChars":122,"textLines":1,"bbox":[70,534,1120,78]}
+{"kind":"notes","id":"nt/74t54u","slide":2,"text":"Tujuan produk mengikuti dua tujuan yang ditegaskan pengguna dari dokumen proposal. Tidak ada tujuan ketiga untuk pelacakan bimbingan atau manajemen pengerjaan skripsi."}
+{"kind":"slide","id":"sl/li2mhd","slide":3,"title":"RISETTI  /  PERENCANAAN & INISIASI","textShapes":25}
+{"kind":"textbox","id":"sh/sbalk7qt","slide":3,"text":"RISETTI  /  PERENCANAAN & INISIASI","textPreview":"RISETTI  /  PERENCANAAN & INISIASI","textChars":34,"textLines":1,"bbox":[70,30,620,22]}
+{"kind":"textbox","id":"sh/7a14b298","slide":3,"text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[1160,30,50,22]}
+{"kind":"shape","id":"sh/6983ih8n","slide":3,"bbox":[70,62,1140,0]}
+{"kind":"textbox","id":"sh/58zm9cr2","slide":3,"text":"Alur bisnis pencarian ide","textPreview":"Alur bisnis pencarian ide","textChars":25,"textLines":1,"bbox":[70,86,1140,58]}
+{"kind":"textbox","id":"sh/k7qlg7qh","slide":3,"text":"Satu alur berakhir pada ringkasan ide yang siap dibawa untuk diskusi awal.","textPreview":"Satu alur berakhir pada ringkasan ide yang siap dibawa untuk diskusi awal.","textChars":74,"textLines":1,"bbox":[70,158,1100,42]}
+{"kind":"textbox","id":"sh/j6h4729w","slide":3,"text":"01","textPreview":"01","textChars":2,"textLines":1,"bbox":[75,250,185,32]}
+{"kind":"shape","id":"sh/i583ex8b","slide":3,"bbox":[75,288,185,0]}
+{"kind":"textbox","id":"sh/x4z25sr6","slide":3,"text":"Tentukan arah","textPreview":"Tentukan arah","textChars":13,"textLines":1,"bbox":[75,304,185,38]}
+{"kind":"textbox","id":"sh/w3qlcnql","slide":3,"text":"Bidang minat dan pengalaman kuliah","textPreview":"Bidang minat dan pengalaman kuliah","textChars":34,"textLines":1,"bbox":[75,350,185,82]}
+{"kind":"textbox","id":"sh/a90v2587","slide":3,"text":"→","textPreview":"→","textChars":1,"textLines":1,"bbox":[272,324,34,40]}
+{"kind":"textbox","id":"sh/ba9wva9s","slide":3,"text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[310,250,185,32]}
+{"kind":"shape","id":"sh/cbid4fqd","slide":3,"bbox":[310,288,185,0]}
+{"kind":"textbox","id":"sh/xcrex0ri","slide":3,"text":"Telusuri","textPreview":"Telusuri","textChars":8,"textLines":1,"bbox":[310,304,185,38]}
+{"kind":"textbox","id":"sh/25gvyl8v","slide":3,"text":"Cari berdasarkan bidang, metode, teknologi, kata kunci","textPreview":"Cari berdasarkan bidang, metode, teknologi, kata kunci","textChars":54,"textLines":1,"bbox":[310,350,185,82]}
+{"kind":"textbox","id":"sh/n6pwrq9g","slide":3,"text":"→","textPreview":"→","textChars":1,"textLines":1,"bbox":[507,324,34,40]}
+{"kind":"textbox","id":"sh/o7id0vq1","slide":3,"text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[545,250,185,32]}
+{"kind":"shape","id":"sh/p8ret0rm","slide":3,"bbox":[545,288,185,0]}
+{"kind":"textbox","id":"sh/ehgvul8z","slide":3,"text":"Bandingkan","textPreview":"Bandingkan","textChars":10,"textLines":1,"bbox":[545,304,185,38]}
+{"kind":"textbox","id":"sh/fipw3q9k","slide":3,"text":"Simpan referensi yang paling dekat dengan minat","textPreview":"Simpan referensi yang paling dekat dengan minat","textChars":47,"textLines":1,"bbox":[545,350,185,82]}
+{"kind":"textbox","id":"sh/3mlsvmpc","slide":3,"text":"→","textPreview":"→","textChars":1,"textLines":1,"bbox":[742,324,34,40]}
+{"kind":"textbox","id":"sh/ilcb2hor","slide":3,"text":"04","textPreview":"04","textChars":2,"textLines":1,"bbox":[780,250,185,32]}
+{"kind":"shape","id":"sh/5onaxw7i","slide":3,"bbox":[780,288,185,0]}
+{"kind":"textbox","id":"sh/4nut4r6x","slide":3,"text":"Uji awal","textPreview":"Uji awal","textChars":8,"textLines":1,"bbox":[780,304,185,38]}
+{"kind":"textbox","id":"sh/rq5czmp8","slide":3,"text":"Catat kebutuhan, akses, waktu, dan risiko","textPreview":"Catat kebutuhan, akses, waktu, dan risiko","textChars":41,"textLines":1,"bbox":[780,350,185,82]}
+{"kind":"textbox","id":"sh/qpwb6hon","slide":3,"text":"→","textPreview":"→","textChars":1,"textLines":1,"bbox":[977,324,34,40]}
+{"kind":"textbox","id":"sh/dcnu1w7e","slide":3,"text":"05","textPreview":"05","textChars":2,"textLines":1,"bbox":[1015,250,185,32]}
+{"kind":"shape","id":"sh/sbet8r6t","slide":3,"bbox":[1015,288,185,0]}
+{"kind":"textbox","id":"sh/7u1sn2p4","slide":3,"text":"Rangkum ide","textPreview":"Rangkum ide","textChars":11,"textLines":1,"bbox":[1015,304,185,38]}
+{"kind":"textbox","id":"sh/6tsbux8j","slide":3,"text":"Susun shortlist dan lembar ringkas ide","textPreview":"Susun shortlist dan lembar ringkas ide","textChars":38,"textLines":1,"bbox":[1015,350,185,82]}
+{"kind":"shape","id":"sh/czqp43mh","slide":3,"bbox":[75,478,1125,0]}
+{"kind":"textbox","id":"sh/x0zqx8n2","slide":3,"text":"HASIL","textPreview":"HASIL","textChars":5,"textLines":1,"bbox":[75,506,100,24]}
+{"kind":"textbox","id":"sh/ax872t4b","slide":3,"text":"Kumpulan referensi tersaring + satu lembar informasi awal untuk setiap ide yang dipertimbangkan.","textPreview":"Kumpulan referensi tersaring + satu lembar informasi awal untuk setiap ide yang dipertimbangkan.","textChars":96,"textLines":1,"bbox":[75,540,1080,55]}
+{"kind":"notes","id":"nt/li2mhd","slide":3,"text":"Urutan proses merupakan rancangan awal bisnis yang perlu diuji melalui wawancara mahasiswa dan dosen sasaran. Lembar ide bukan persetujuan akademik."}
+{"kind":"slide","id":"sl/ao8h5f","slide":4,"title":"RISETTI  /  PERENCANAAN & INISIASI","textShapes":16}
+{"kind":"textbox","id":"sh/fidonalo","slide":4,"text":"RISETTI  /  PERENCANAAN & INISIASI","textPreview":"RISETTI  /  PERENCANAAN & INISIASI","textChars":34,"textLines":1,"bbox":[70,30,620,22]}
+{"kind":"textbox","id":"sh/gjmpwf29","slide":4,"text":"04","textPreview":"04","textChars":2,"textLines":1,"bbox":[1160,30,50,22]}
+{"kind":"shape","id":"sh/hkv6pkju","slide":4,"bbox":[70,62,1140,0]}
+{"kind":"textbox","id":"sh/2l47ypkf","slide":4,"text":"Inisiasi proyek","textPreview":"Inisiasi proyek","textChars":15,"textLines":1,"bbox":[70,86,1140,58]}
+{"kind":"textbox","id":"sh/36doru10","slide":4,"text":"Sebelum desain dan coding, pastikan masalah, pengguna, dan sumber katalog jelas.","textPreview":"Sebelum desain dan coding, pastikan masalah, pengguna, dan sumber katalog jelas.","textChars":80,"textLines":1,"bbox":[70,158,1100,42]}
+{"kind":"textbox","id":"sh/476p0z2l","slide":4,"text":"KEGIATAN","textPreview":"KEGIATAN","textChars":8,"textLines":1,"bbox":[80,228,220,28]}
+{"kind":"textbox","id":"sh/p8f6t4j6","slide":4,"text":"Tetapkan masalah","textPreview":"Tetapkan masalah","textChars":16,"textLines":1,"bbox":[80,274,490,29]}
+{"kind":"textbox","id":"sh/ipknmlkb","slide":4,"text":"Mahasiswa sulit menelusuri contoh TA dan membandingkan apakah ide awalnya realistis. Validasi rumusan ini lewat wawancara.","textPreview":"Mahasiswa sulit menelusuri contoh TA dan membandingkan apakah ide awalnya realistis. Validasi rumusan ini lewat wawancara.","textChars":122,"textLines":1,"bbox":[80,307,500,64]}
+{"kind":"textbox","id":"sh/jatofqlw","slide":4,"text":"Tentukan pengguna","textPreview":"Tentukan pengguna","textChars":17,"textLines":1,"bbox":[80,378,490,29]}
+{"kind":"textbox","id":"sh/3alkfuhw","slide":4,"text":"Mahasiswa TI sebagai pengguna utama; dosen atau pengelola prodi sebagai narasumber dan calon kurator referensi.","textPreview":"Mahasiswa TI sebagai pengguna utama; dosen atau pengelola prodi sebagai narasumber dan calon kurator referensi.","textChars":111,"textLines":1,"bbox":[80,411,500,64]}
+{"kind":"textbox","id":"sh/29cj6p0b","slide":4,"text":"Periksa sumber data","textPreview":"Periksa sumber data","textChars":19,"textLines":1,"bbox":[80,482,490,29]}
+{"kind":"textbox","id":"sh/pcn2h4z2","slide":4,"text":"Pastikan metadata/abstrak TA dapat digunakan, punya sumber jelas, dan tidak menampilkan dokumen terbatas.","textPreview":"Pastikan metadata/abstrak TA dapat digunakan, punya sumber jelas, dan tidak menampilkan dokumen terbatas.","textChars":105,"textLines":1,"bbox":[80,515,500,64]}
+{"kind":"textbox","id":"sh/4be18zih","slide":4,"text":"Buat project charter","textPreview":"Buat project charter","textChars":20,"textLines":1,"bbox":[80,586,490,29]}
+{"kind":"textbox","id":"sh/f6lkbuhk","slide":4,"text":"Catat tujuan, batas MVP, pihak terkait, asumsi, risiko, dan kriteria lanjut/tunda.","textPreview":"Catat tujuan, batas MVP, pihak terkait, asumsi, risiko, dan kriteria lanjut/tunda.","textChars":82,"textLines":1,"bbox":[80,619,500,64]}
+{"kind":"shape","id":"sh/u5cj2p0f","slide":4,"bbox":[620,224,0,410]}
+{"kind":"textbox","id":"sh/h832d4zq","slide":4,"text":"HASIL INISIASI","textPreview":"HASIL INISIASI","textChars":14,"textLines":1,"bbox":[675,228,360,28]}
+{"kind":"textbox","id":"sh/g7u14zi5","slide":4,"text":"Project charter\nRumusan masalah yang sudah dibahas dengan calon pengguna.\n\nDaftar pihak terkait\nMahasiswa, dosen pembimbing/narasumber, pengelola prodi.\n\nKeputusan lanjut\nSepakati akses referensi dan satu skenario pencarian untuk diuji.","textPreview":"Project charter | Rumusan masalah yang sudah dibahas dengan calon pengguna. |  | Daftar pihak terkait | Mahasiswa, dosen pembimbing/naras...","textChars":236,"textLines":8,"bbox":[675,274,490,295]}
+{"kind":"textbox","id":"sh/7i107aho","slide":4,"text":"Gerbang keputusan: lanjut ke perencanaan rinci bila ada pengguna yang mengonfirmasi masalah dan data katalog dapat digunakan.","textPreview":"Gerbang keputusan: lanjut ke perencanaan rinci bila ada pengguna yang mengonfirmasi masalah dan data katalog dapat digunakan.","textChars":125,"textLines":1,"bbox":[675,575,490,60]}
+{"kind":"notes","id":"nt/ao8h5f","slide":4,"text":"Klaim masalah pada slide ini diperlakukan sebagai hipotesis kerja, bukan hasil riset pengguna yang sudah dilakukan. Tim perlu mengujinya pada tahap inisiasi."}
+{"kind":"slide","id":"sl/pi6yv0","slide":5,"title":"RISETTI  /  PERENCANAAN & INISIASI","textShapes":22}
+{"kind":"textbox","id":"sh/6p876hgb","slide":5,"text":"RISETTI  /  PERENCANAAN & INISIASI","textPreview":"RISETTI  /  PERENCANAAN & INISIASI","textChars":34,"textLines":1,"bbox":[70,30,620,22]}
+{"kind":"textbox","id":"sh/tcz6hwzm","slide":5,"text":"05","textPreview":"05","textChars":2,"textLines":1,"bbox":[1160,30,50,22]}
+{"kind":"shape","id":"sh/sbqp8ryh","slide":5,"bbox":[70,62,1140,0]}
+{"kind":"textbox","id":"sh/jmxobmhk","slide":5,"text":"Perencanaan: apa yang dibangun","textPreview":"Perencanaan: apa yang dibangun","textChars":30,"textLines":1,"bbox":[70,86,1140,58]}
+{"kind":"textbox","id":"sh/ylo72hgz","slide":5,"text":"Ruang lingkup MVP dibatasi pada dua kemampuan produk.","textPreview":"Ruang lingkup MVP dibatasi pada dua kemampuan produk.","textChars":53,"textLines":1,"bbox":[70,158,1100,40]}
+{"kind":"textbox","id":"sh/loz6dczq","slide":5,"text":"MASUK MVP","textPreview":"MASUK MVP","textChars":9,"textLines":1,"bbox":[80,228,240,28]}
+{"kind":"shape","id":"sh/knqp47y5","slide":5,"bbox":[80,266,495,0]}
+{"kind":"textbox","id":"sh/bixo72ho","slide":5,"text":"•","textPreview":"•","textChars":1,"textLines":1,"bbox":[80,288,24,34]}
+{"kind":"textbox","id":"sh/ahonyxg3","slide":5,"text":"Katalog tugas akhir dengan metadata bidang, metode, teknologi, kata kunci, tahun, dan sumber.","textPreview":"Katalog tugas akhir dengan metadata bidang, metode, teknologi, kata kunci, tahun, dan sumber.","textChars":93,"textLines":1,"bbox":[112,288,468,65]}
+{"kind":"textbox","id":"sh/o3e5sb69","slide":5,"text":"•","textPreview":"•","textChars":1,"textLines":1,"bbox":[80,358,24,34]}
+{"kind":"textbox","id":"sh/p4n6lgnu","slide":5,"text":"Pencarian dan filter; buka ringkasan referensi yang diizinkan.","textPreview":"Pencarian dan filter; buka ringkasan referensi yang diizinkan.","textChars":62,"textLines":1,"bbox":[112,358,468,65]}
+{"kind":"textbox","id":"sh/2hwnq1o3","slide":5,"text":"•","textPreview":"•","textChars":1,"textLines":1,"bbox":[80,428,24,34]}
+{"kind":"textbox","id":"sh/ni5oz65o","slide":5,"text":"Formulir lembar ide: masalah, calon pengguna/data, metode awal, kebutuhan teknis, waktu, dan risiko.","textPreview":"Formulir lembar ide: masalah, calon pengguna/data, metode awal, kebutuhan teknis, waktu, dan risiko.","textChars":100,"textLines":1,"bbox":[112,428,468,65]}
+{"kind":"textbox","id":"sh/0fe5or6d","slide":5,"text":"•","textPreview":"•","textChars":1,"textLines":1,"bbox":[80,498,24,34]}
+{"kind":"textbox","id":"sh/1gn6xwny","slide":5,"text":"Simpan dan bandingkan beberapa ide dalam shortlist.","textPreview":"Simpan dan bandingkan beberapa ide dalam shortlist.","textChars":51,"textLines":1,"bbox":[112,498,468,65]}
+{"kind":"shape","id":"sh/edcnm1o7","slide":5,"bbox":[635,225,0,387]}
+{"kind":"textbox","id":"sh/fe54v65s","slide":5,"text":"DI LUAR MVP","textPreview":"DI LUAR MVP","textChars":11,"textLines":1,"bbox":[680,228,280,28]}
+{"kind":"shape","id":"sh/kby50v6h","slide":5,"bbox":[680,266,510,0]}
+{"kind":"textbox","id":"sh/lc76t0n2","slide":5,"text":"•","textPreview":"•","textChars":1,"textLines":1,"bbox":[680,288,24,34]}
+{"kind":"textbox","id":"sh/tsn6d0f6","slide":5,"text":"Persetujuan judul atau rekomendasi akademik otomatis.","textPreview":"Persetujuan judul atau rekomendasi akademik otomatis.","textChars":53,"textLines":1,"bbox":[712,288,468,65]}
+{"kind":"textbox","id":"sh/sru5kvyl","slide":5,"text":"•","textPreview":"•","textChars":1,"textLines":1,"bbox":[680,358,24,34]}
+{"kind":"textbox","id":"sh/7qlobqx0","slide":5,"text":"Pelacakan bimbingan, milestone skripsi, dan monitoring progres.","textPreview":"Pelacakan bimbingan, milestone skripsi, dan monitoring progres.","textChars":63,"textLines":1,"bbox":[712,358,468,65]}
+{"kind":"textbox","id":"sh/6pcnilgf","slide":5,"text":"•","textPreview":"•","textChars":1,"textLines":1,"bbox":[680,428,24,34]}
+{"kind":"textbox","id":"sh/5o3m9gfa","slide":5,"text":"Penulisan skripsi otomatis atau pemeriksaan plagiarisme.","textPreview":"Penulisan skripsi otomatis atau pemeriksaan plagiarisme.","textChars":56,"textLines":1,"bbox":[712,428,468,65]}
+{"kind":"textbox","id":"sh/knu5gbyp","slide":5,"text":"•","textPreview":"•","textChars":1,"textLines":1,"bbox":[680,498,24,34]}
+{"kind":"textbox","id":"sh/j2l476x4","slide":5,"text":"Integrasi SIAKAD dan aplikasi seluler.","textPreview":"Integrasi SIAKAD dan aplikasi seluler.","textChars":38,"textLines":1,"bbox":[712,498,468,65]}
+{"kind":"notes","id":"nt/pi6yv0","slide":5,"text":"Tujuan dan scope mengikuti klarifikasi terbaru pengguna. Shortlist dan formulir ide adalah cara mewujudkan dua tujuan, bukan sasaran produk tambahan."}
+{"kind":"slide","id":"sl/uw2bk6","slide":6,"title":"RISETTI  /  PERENCANAAN & INISIASI","textShapes":22}
+{"kind":"textbox","id":"sh/94fix0fi","slide":6,"text":"RISETTI  /  PERENCANAAN & INISIASI","textPreview":"RISETTI  /  PERENCANAAN & INISIASI","textChars":34,"textLines":1,"bbox":[70,30,620,22]}
+{"kind":"textbox","id":"sh/m1oz2lg7","slide":6,"text":"06","textPreview":"06","textChars":2,"textLines":1,"bbox":[1160,30,50,22]}
+{"kind":"shape","id":"sh/n2x0vqxs","slide":6,"bbox":[70,62,1140,0]}
+{"kind":"textbox","id":"sh/0zmh0by1","slide":6,"text":"Metode kerja dan tools kolaborasi","textPreview":"Metode kerja dan tools kolaborasi","textChars":33,"textLines":1,"bbox":[70,86,1140,58]}
+{"kind":"textbox","id":"sh/l0fytgfm","slide":6,"text":"Metode untuk memahami kebutuhan, lalu mengembangkan MVP secara bertahap.","textPreview":"Metode untuk memahami kebutuhan, lalu mengembangkan MVP secara bertahap.","textChars":72,"textLines":1,"bbox":[70,158,1100,40]}
+{"kind":"textbox","id":"sh/yx4zylgv","slide":6,"text":"METODE","textPreview":"METODE","textChars":6,"textLines":1,"bbox":[80,222,180,25]}
+{"kind":"textbox","id":"sh/zydgr6xg","slide":6,"text":"Design Thinking","textPreview":"Design Thinking","textChars":15,"textLines":1,"bbox":[80,258,330,36]}
+{"kind":"textbox","id":"sh/cbmhwby5","slide":6,"text":"Empathize → Define → Ideate → Prototype → Test","textPreview":"Empathize → Define → Ideate → Prototype → Test","textChars":46,"textLines":1,"bbox":[80,298,500,34]}
+{"kind":"textbox","id":"sh/dcvypgfa","slide":6,"text":"Dipakai saat inisiasi untuk menggali masalah pencarian ide, merancang alur, dan menguji prototipe dengan mahasiswa.","textPreview":"Dipakai saat inisiasi untuk menggali masalah pencarian ide, merancang alur, dan menguji prototipe dengan mahasiswa.","textChars":115,"textLines":1,"bbox":[80,340,485,84]}
+{"kind":"textbox","id":"sh/l4rqhw3m","slide":6,"text":"Agile / Scrum ringan","textPreview":"Agile / Scrum ringan","textChars":20,"textLines":1,"bbox":[80,440,360,35]}
+{"kind":"textbox","id":"sh/kji9or21","slide":6,"text":"Backlog → Sprint → Review → Perbaiki","textPreview":"Backlog → Sprint → Review → Perbaiki","textChars":36,"textLines":1,"bbox":[80,480,490,33]}
+{"kind":"textbox","id":"sh/zi98fmlg","slide":6,"text":"Sprint 1-2 minggu; review singkat tiap akhir sprint. Prioritas awal: katalog, pencarian, lalu lembar kelayakan ide.","textPreview":"Sprint 1-2 minggu; review singkat tiap akhir sprint. Prioritas awal: katalog, pencarian, lalu lembar kelayakan ide.","textChars":115,"textLines":1,"bbox":[80,520,485,74]}
+{"kind":"shape","id":"sh/yh0rmhkv","slide":6,"bbox":[620,220,0,398]}
+{"kind":"textbox","id":"sh/xgrqdc3a","slide":6,"text":"TOOLS KOLABORASI","textPreview":"TOOLS KOLABORASI","textChars":16,"textLines":1,"bbox":[675,222,350,25]}
+{"kind":"textbox","id":"sh/cfi9kr2p","slide":6,"text":"Google Docs / Drive","textPreview":"Google Docs / Drive","textChars":19,"textLines":1,"bbox":[675,266,205,30]}
+{"kind":"textbox","id":"sh/be98bmlk","slide":6,"text":"Charter, kebutuhan, catatan wawancara, sumber referensi","textPreview":"Charter, kebutuhan, catatan wawancara, sumber referensi","textChars":55,"textLines":1,"bbox":[880,266,300,48]}
+{"kind":"shape","id":"sh/ad07ihkz","slide":6,"bbox":[675,319,505,0]}
+{"kind":"textbox","id":"sh/pc7q9c3e","slide":6,"text":"Trello","textPreview":"Trello","textChars":6,"textLines":1,"bbox":[675,336,205,30]}
+{"kind":"textbox","id":"sh/obypg72t","slide":6,"text":"Backlog, tugas sprint, PIC, status kerja","textPreview":"Backlog, tugas sprint, PIC, status kerja","textChars":40,"textLines":1,"bbox":[880,336,300,48]}
+{"kind":"shape","id":"sh/gv29w7ap","slide":6,"bbox":[675,389,505,0]}
+{"kind":"textbox","id":"sh/1wbq5cba","slide":6,"text":"Figma","textPreview":"Figma","textChars":5,"textLines":1,"bbox":[675,406,205,30]}
+{"kind":"textbox","id":"sh/etkruhsj","slide":6,"text":"Alur pengguna dan prototipe yang diuji","textPreview":"Alur pengguna dan prototipe yang diuji","textChars":38,"textLines":1,"bbox":[880,406,300,48]}
+{"kind":"shape","id":"sh/fut832t4","slide":6,"bbox":[675,459,505,0]}
+{"kind":"textbox","id":"sh/sr29s7ad","slide":6,"text":"GitHub","textPreview":"GitHub","textChars":6,"textLines":1,"bbox":[675,476,205,30]}
+{"kind":"textbox","id":"sh/tsbq1cby","slide":6,"text":"Repositori, isu teknis, perubahan kode","textPreview":"Repositori, isu teknis, perubahan kode","textChars":38,"textLines":1,"bbox":[880,476,300,48]}
+{"kind":"shape","id":"sh/6p0rqxsn","slide":6,"bbox":[675,529,505,0]}
+{"kind":"textbox","id":"sh/rq98z2t8","slide":6,"text":"WhatsApp / Meet","textPreview":"WhatsApp / Meet","textChars":15,"textLines":1,"bbox":[675,546,205,30]}
+{"kind":"textbox","id":"sh/cnm94rax","slide":6,"text":"Koordinasi cepat dan wawancara jarak jauh","textPreview":"Koordinasi cepat dan wawancara jarak jauh","textChars":41,"textLines":1,"bbox":[880,546,300,48]}
+{"kind":"notes","id":"nt/uw2bk6","slide":6,"text":"Daftar tools adalah usulan praktis untuk tim, bukan ketergantungan produk. Tim dapat mengganti tools sesuai akses kampus dan kebiasaan anggota."}
+{"kind":"slide","id":"sl/e661xn","slide":7,"title":"RISETTI  /  PERENCANAAN & INISIASI","textShapes":17}
+{"kind":"textbox","id":"sh/ylw3y9gf","slide":7,"text":"RISETTI  /  PERENCANAAN & INISIASI","textPreview":"RISETTI  /  PERENCANAAN & INISIASI","textChars":34,"textLines":1,"bbox":[70,30,620,22]}
+{"kind":"textbox","id":"sh/lonmtof6","slide":7,"text":"07","textPreview":"07","textChars":2,"textLines":1,"bbox":[1160,30,50,22]}
+{"kind":"shape","id":"sh/0nel0jyl","slide":7,"bbox":[70,62,1140,0]}
+{"kind":"textbox","id":"sh/nq54vyxw","slide":7,"text":"AI lokal sebagai asisten ide","textPreview":"AI lokal sebagai asisten ide","textChars":28,"textLines":1,"bbox":[70,86,1140,58]}
+{"kind":"textbox","id":"sh/mpw32tgr","slide":7,"text":"Gemma 4 membantu menyusun ringkasan awal berdasarkan data katalog; hasilnya tetap perlu diperiksa.","textPreview":"Gemma 4 membantu menyusun ringkasan awal berdasarkan data katalog; hasilnya tetap perlu diperiksa.","textChars":98,"textLines":1,"bbox":[70,158,1100,42]}
+{"kind":"textbox","id":"sh/9cnmxof2","slide":7,"text":"TUGAS YANG DIBANTU","textPreview":"TUGAS YANG DIBANTU","textChars":18,"textLines":1,"bbox":[80,226,400,26]}
+{"kind":"textbox","id":"sh/8relojyh","slide":7,"text":"•  Mengubah pertanyaan mahasiswa menjadi kata kunci pencarian.\n\n•  Merangkum referensi yang ditemukan katalog.\n\n•  Mengisi draf lembar ide: masalah, data, metode, kebutuhan teknis, dan risiko.","textPreview":"•  Mengubah pertanyaan mahasiswa menjadi kata kunci pencarian. |  | •  Merangkum referensi yang ditemukan katalog. |  | •  Mengisi draf l...","textChars":192,"textLines":5,"bbox":[80,266,505,264]}
+{"kind":"shape","id":"sh/3ulkjuhs","slide":7,"bbox":[620,222,0,390]}
+{"kind":"textbox","id":"sh/2ts3qpg7","slide":7,"text":"ALUR MODEL LOKAL","textPreview":"ALUR MODEL LOKAL","textChars":16,"textLines":1,"bbox":[675,226,350,26]}
+{"kind":"textbox","id":"sh/0ja9obux","slide":7,"text":"1","textPreview":"1","textChars":1,"textLines":1,"bbox":[680,276,30,28]}
+{"kind":"textbox","id":"sh/1kjahgbi","slide":7,"text":"Website RisetTI","textPreview":"Website RisetTI","textChars":15,"textLines":1,"bbox":[724,272,390,34]}
+{"kind":"shape","id":"sh/ehsrm1c7","slide":7,"bbox":[698,306,0,23]}
+{"kind":"textbox","id":"sh/fi1sf6tc","slide":7,"text":"2","textPreview":"2","textChars":1,"textLines":1,"bbox":[680,345,30,28]}
+{"kind":"textbox","id":"sh/ona9svu9","slide":7,"text":"Backend aplikasi","textPreview":"Backend aplikasi","textChars":16,"textLines":1,"bbox":[724,341,390,34]}
+{"kind":"shape","id":"sh/9o3algbu","slide":7,"bbox":[698,375,0,23]}
+{"kind":"textbox","id":"sh/2lsrqlc3","slide":7,"text":"3","textPreview":"3","textChars":1,"textLines":1,"bbox":[680,414,30,28]}
+{"kind":"textbox","id":"sh/nm1sjqto","slide":7,"text":"Ollama di host lokal","textPreview":"Ollama di host lokal","textChars":20,"textLines":1,"bbox":[724,410,390,34]}
+{"kind":"shape","id":"sh/4rq9grup","slide":7,"bbox":[698,444,0,23]}
+{"kind":"textbox","id":"sh/5sza9wba","slide":7,"text":"4","textPreview":"4","textChars":1,"textLines":1,"bbox":[680,483,30,28]}
+{"kind":"textbox","id":"sh/lc7yxoj2","slide":7,"text":"Gemma 4 E2B","textPreview":"Gemma 4 E2B","textChars":11,"textLines":1,"bbox":[724,479,390,34]}
+{"kind":"shape","id":"sh/kbyhojih","slide":7,"bbox":[675,555,505,0]}
+{"kind":"textbox","id":"sh/japgve1w","slide":7,"text":"Mulai dengan gemma4:e2b-it-q4_K_M (file model sekitar 4,6 GB). Perangkat yang menjalankan Ollama harus aktif dan dapat diakses backend; localhost di laptop anggota tidak otomatis tersedia bagi pengguna lain.","textPreview":"Mulai dengan gemma4:e2b-it-q4_K_M (file model sekitar 4,6 GB). Perangkat yang menjalankan Ollama harus aktif dan dapat diakses backend; l...","textChars":207,"textLines":1,"bbox":[675,574,505,70]}
+{"kind":"textbox","id":"sh/y9gzm90b","slide":7,"text":"Batas: AI hanya menyarankan draf dari referensi yang diambil katalog. Tampilkan sumbernya; jangan keluarkan penilaian kelayakan final.","textPreview":"Batas: AI hanya menyarankan draf dari referensi yang diambil katalog. Tampilkan sumbernya; jangan keluarkan penilaian kelayakan final.","textChars":134,"textLines":1,"bbox":[80,566,505,65]}
+{"kind":"notes","id":"nt/e661xn","slide":7,"text":"Model yang dipilih mengikuti keputusan pengguna: Gemma 4 dijalankan secara lokal. Gemma 4 berlisensi Apache 2.0 dan tersedia sebagai open weights dengan varian E2B/E4B yang ditujukan untuk deployment perangkat edge. Varian Ollama gemma4:e2b-it-q4_K_M tercatat berukuran sekitar 4.6 GB. Ukuran file model bukan jaminan kebutuhan RAM runtime. Sumber: https://ai.google.dev/gemma/docs/core/model_card_4 ; https://ai.google.dev/gemma/docs/core ; https://ollama.com/library/gemma4/tags."}
+{"kind":"slide","id":"sl/d88xm8","slide":8,"title":"RISETTI  /  PERENCANAAN & INISIASI","textShapes":29}
+{"kind":"textbox","id":"sh/1snihoby","slide":8,"text":"RISETTI  /  PERENCANAAN & INISIASI","textPreview":"RISETTI  /  PERENCANAAN & INISIASI","textChars":34,"textLines":1,"bbox":[70,30,620,22]}
+{"kind":"textbox","id":"sh/e5wzmtsn","slide":8,"text":"08","textPreview":"08","textChars":2,"textLines":1,"bbox":[1160,30,50,22]}
+{"kind":"shape","id":"sh/f65gfyts","slide":8,"bbox":[70,62,1140,0]}
+{"kind":"textbox","id":"sh/s3uhkjah","slide":8,"text":"Rencana awal dan pembagian kerja","textPreview":"Rencana awal dan pembagian kerja","textChars":32,"textLines":1,"bbox":[70,86,1140,58]}
+{"kind":"textbox","id":"sh/d43ydob2","slide":8,"text":"Empat tahap awal membawa tim dari validasi masalah ke prototipe yang dapat dicoba.","textPreview":"Empat tahap awal membawa tim dari validasi masalah ke prototipe yang dapat dicoba.","textChars":82,"textLines":1,"bbox":[70,158,1100,40]}
+{"kind":"textbox","id":"sh/q1czi9sb","slide":8,"text":"Minggu 1","textPreview":"Minggu 1","textChars":8,"textLines":1,"bbox":[80,220,130,28]}
+{"kind":"textbox","id":"sh/r2lgbetw","slide":8,"text":"Validasi kebutuhan","textPreview":"Validasi kebutuhan","textChars":18,"textLines":1,"bbox":[230,220,240,30]}
+{"kind":"textbox","id":"sh/czyhwnal","slide":8,"text":"Wawancara pengguna, charter, data referensi","textPreview":"Wawancara pengguna, charter, data referensi","textChars":43,"textLines":1,"bbox":[485,220,675,40]}
+{"kind":"shape","id":"sh/x07ip8b6","slide":8,"bbox":[80,270,1100,0]}
+{"kind":"textbox","id":"sh/dovul8bq","slide":8,"text":"Minggu 2","textPreview":"Minggu 2","textChars":8,"textLines":1,"bbox":[80,287,130,28]}
+{"kind":"textbox","id":"sh/cnmts3u5","slide":8,"text":"Rancang proses","textPreview":"Rancang proses","textChars":14,"textLines":1,"bbox":[230,287,240,30]}
+{"kind":"textbox","id":"sh/rmdcjitk","slide":8,"text":"Alur pencarian, kriteria metadata, wireframe","textPreview":"Alur pencarian, kriteria metadata, wireframe","textChars":44,"textLines":1,"bbox":[485,287,675,40]}
+{"kind":"shape","id":"sh/qlkbqdcz","slide":8,"bbox":[80,337,1100,0]}
+{"kind":"textbox","id":"sh/pkbuh8be","slide":8,"text":"Minggu 3","textPreview":"Minggu 3","textChars":8,"textLines":1,"bbox":[80,354,130,28]}
+{"kind":"textbox","id":"sh/4j2to3ut","slide":8,"text":"Bangun inti","textPreview":"Bangun inti","textChars":11,"textLines":1,"bbox":[230,354,240,30]}
+{"kind":"textbox","id":"sh/3itcfyto","slide":8,"text":"Katalog dan pencarian/filter","textPreview":"Katalog dan pencarian/filter","textChars":28,"textLines":1,"bbox":[485,354,675,40]}
+{"kind":"shape","id":"sh/2hkbmtc3","slide":8,"bbox":[80,404,1100,0]}
+{"kind":"textbox","id":"sh/9gfutsby","slide":8,"text":"Minggu 4","textPreview":"Minggu 4","textChars":8,"textLines":1,"bbox":[80,421,130,28]}
+{"kind":"textbox","id":"sh/of6d07ud","slide":8,"text":"Uji formulir ide","textPreview":"Uji formulir ide","textChars":16,"textLines":1,"bbox":[230,421,240,30]}
+{"kind":"textbox","id":"sh/8jexwb29","slide":8,"text":"Lembar kebutuhan/risiko dan evaluasi pengguna","textPreview":"Lembar kebutuhan/risiko dan evaluasi pengguna","textChars":45,"textLines":1,"bbox":[485,421,675,40]}
+{"kind":"shape","id":"sh/9knepgju","slide":8,"bbox":[80,471,1100,0]}
+{"kind":"textbox","id":"sh/mxwfu1kj","slide":8,"text":"ANGGOTA DAN TANGGUNG JAWAB","textPreview":"ANGGOTA DAN TANGGUNG JAWAB","textChars":26,"textLines":1,"bbox":[80,505,540,26]}
+{"kind":"textbox","id":"sh/7y5wn614","slide":8,"text":"20240140037","textPreview":"20240140037","textChars":11,"textLines":1,"bbox":[80,545,150,26]}
+{"kind":"textbox","id":"sh/kvudsr2d","slide":8,"text":"Koordinasi produk dan analisis kebutuhan","textPreview":"Koordinasi produk dan analisis kebutuhan","textChars":40,"textLines":1,"bbox":[230,545,390,34]}
+{"kind":"textbox","id":"sh/lw3elwjy","slide":8,"text":"20240140125","textPreview":"20240140125","textChars":11,"textLines":1,"bbox":[80,585,150,26]}
+{"kind":"textbox","id":"sh/ytcvq1k7","slide":8,"text":"Riset pengguna dan desain alur","textPreview":"Riset pengguna dan desain alur","textChars":30,"textLines":1,"bbox":[230,585,390,34]}
+{"kind":"textbox","id":"sh/zulwjm1s","slide":8,"text":"20240140005","textPreview":"20240140005","textChars":11,"textLines":1,"bbox":[80,625,150,26]}
+{"kind":"textbox","id":"sh/crudor2h","slide":8,"text":"Pengembangan frontend","textPreview":"Pengembangan frontend","textChars":21,"textLines":1,"bbox":[230,625,390,34]}
+{"kind":"textbox","id":"sh/xs3ehwjm","slide":8,"text":"20240140031","textPreview":"20240140031","textChars":11,"textLines":1,"bbox":[660,545,150,26]}
+{"kind":"textbox","id":"sh/fm1wrmlo","slide":8,"text":"Backend dan basis data","textPreview":"Backend dan basis data","textChars":22,"textLines":1,"bbox":[810,545,390,34]}
+{"kind":"textbox","id":"sh/elsfyh43","slide":8,"text":"20240140025","textPreview":"20240140025","textChars":11,"textLines":1,"bbox":[660,585,150,26]}
+{"kind":"textbox","id":"sh/1ojytc3u","slide":8,"text":"Kurasi metadata katalog","textPreview":"Kurasi metadata katalog","textChars":23,"textLines":1,"bbox":[810,585,390,34]}
+{"kind":"textbox","id":"sh/0nax0rm9","slide":8,"text":"20240140154","textPreview":"20240140154","textChars":11,"textLines":1,"bbox":[660,625,150,26]}
+{"kind":"textbox","id":"sh/nqlgvmlk","slide":8,"text":"QA, integrasi, dan deployment","textPreview":"QA, integrasi, dan deployment","textChars":29,"textLines":1,"bbox":[810,625,390,34]}
+{"kind":"notes","id":"nt/d88xm8","slide":8,"text":"Jadwal empat minggu merupakan rancangan awal untuk membantu perencanaan. Perlu disesuaikan setelah beban kuliah, ketersediaan anggota, dan akses data dikonfirmasi. Pembagian peran mengikuti struktur yang sudah tercantum dalam proposal."}

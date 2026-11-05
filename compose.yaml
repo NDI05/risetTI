@@ -1,0 +1,97 @@
+services:
+  app:
+    build: .
+    restart: unless-stopped
+    stop_grace_period: 2m
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      HOST: 0.0.0.0
+      DATABASE_PATH: /data/risetti.sqlite
+      TRUST_PROXY_HOPS: 1
+      COOKIE_SECURE: "true"
+      ADMIN_EMAIL: ${ADMIN_EMAIL:?Set ADMIN_EMAIL in .env}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:?Set ADMIN_PASSWORD in .env}
+      OLLAMA_BASE_URL: http://ollama:11434
+      OLLAMA_MODEL: ${OLLAMA_MODEL:-gemma4:e2b-it-q4_K_M}
+    volumes:
+      - risetti_data:/data
+    depends_on:
+      ollama:
+        condition: service_healthy
+    networks:
+      - backend
+
+  ollama:
+    image: ${OLLAMA_IMAGE:-ollama/ollama:latest}
+    restart: unless-stopped
+    expose:
+      - "11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    healthcheck:
+      test: ["CMD-SHELL", "ollama list >/dev/null 2>&1"]
+      interval: 15s
+      timeout: 5s
+      start_period: 30s
+      retries: 5
+    networks:
+      - backend
+
+  ollama-model:
+    image: ${OLLAMA_IMAGE:-ollama/ollama:latest}
+    profiles: ["setup"]
+    entrypoint: ["ollama", "pull"]
+    command: ["${OLLAMA_MODEL:-gemma4:e2b-it-q4_K_M}"]
+    depends_on:
+      ollama:
+        condition: service_healthy
+    environment:
+      OLLAMA_HOST: http://ollama:11434
+    networks:
+      - backend
+
+  backup:
+    build: .
+    restart: unless-stopped
+    entrypoint: ["sh", "-c"]
+    command: ["while true; do node scripts/backup-database.mjs || echo 'Daily database backup failed'; sleep 86400; done"]
+    environment:
+      DATABASE_PATH: /data/risetti.sqlite
+      BACKUP_DIR: /backups
+      BACKUP_RETENTION_DAYS: ${BACKUP_RETENTION_DAYS:-30}
+    volumes:
+      - risetti_data:/data
+      - risetti_backups:/backups
+    depends_on:
+      app:
+        condition: service_healthy
+
+  caddy:
+    image: caddy:2
+    restart: unless-stopped
+    environment:
+      DOMAIN: ${DOMAIN:?Set DOMAIN to a domain pointed at this server}
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      app:
+        condition: service_healthy
+    networks:
+      - backend
+
+volumes:
+  risetti_data:
+  risetti_backups:
+  ollama_data:
+  caddy_data:
+  caddy_config:
+
+networks:
+  backend:

@@ -1,0 +1,192 @@
+import "dotenv/config";
+import { createDatabase, insertImportedReference } from "../src/db.js";
+import type { ReferenceInput } from "../src/types.js";
+
+const OPENALEX_API = "https://api.openalex.org/works";
+const TOPIC_SEARCHES = [
+  "medicines returned pharmacies disposal",
+  "computer science information systems",
+  "information systems",
+  "software engineering",
+  "human computer interaction",
+  "information retrieval",
+  "artificial intelligence machine learning",
+  "data mining",
+  "information security cybersecurity",
+  "digital health information technology",
+  "healthcare information systems",
+  "decision support systems",
+  "e-government information systems",
+  "education technology information systems",
+  "supply chain information systems",
+  "database management information systems",
+  "natural language processing",
+  "web application usability",
+  "business intelligence information systems",
+  "research information systems",
+  "mobile application information systems",
+  "cloud computing information systems",
+  "internet of things information systems",
+  "data science information systems",
+  "software quality information systems",
+  "digital transformation information systems",
+  "computer networks information systems",
+  "pharmacy medicine return information systems",
+  "hospital information systems",
+  "financial technology information systems",
+  "agriculture information systems technology",
+  "open data information systems",
+  "information systems user experience",
+];
+
+interface OpenAlexWork {
+  id?: string;
+  doi?: string | null;
+  title?: string | null;
+  publication_year?: number | null;
+  language?: string | null;
+  abstract_inverted_index?: Record<string, number[]> | null;
+  authorships?: { author?: { display_name?: string | null } | null; institutions?: { display_name?: string | null }[] }[];
+  primary_location?: {
+    landing_page_url?: string | null;
+    license?: string | null;
+    source?: { display_name?: string | null } | null;
+  } | null;
+  topics?: { subfield?: { display_name?: string | null } | null; field?: { display_name?: string | null } | null }[];
+}
+
+interface OpenAlexResponse {
+  meta?: { next_cursor?: string | null };
+  results?: OpenAlexWork[];
+}
+
+function option(name: string, fallback: number): number {
+  const key = `--${name}`;
+  const index = process.argv.indexOf(key);
+  if (index < 0) return fallback;
+  const value = Number(process.argv[index + 1]);
+  if (!Number.isSafeInteger(value) || value < 1 || value > 100_000) throw new Error(`${key} harus berupa angka antara 1 dan 100000.`);
+  return value;
+}
+
+function stringOption(name: string): string | null {
+  const index = process.argv.indexOf(`--${name}`);
+  if (index < 0) return null;
+  const value = process.argv[index + 1]?.trim();
+  if (!value || value.length > 160) throw new Error(`--${name} harus berisi teks maksimal 160 karakter.`);
+  return value;
+}
+
+function reconstructAbstract(index: OpenAlexWork["abstract_inverted_index"]): string {
+  if (!index) return "";
+  const words: string[] = [];
+  for (const [word, positions] of Object.entries(index)) {
+    for (const position of positions) words[position] = word;
+  }
+  return words.filter((word) => word !== undefined).join(" ").slice(0, 4000).trim();
+}
+
+function toReference(work: OpenAlexWork): ReferenceInput | null {
+  const id = work.id?.trim();
+  const title = work.title?.trim();
+  const year = work.publication_year;
+  const location = work.primary_location;
+  const summary = reconstructAbstract(work.abstract_inverted_index);
+  if (!id || !title || !summary || !Number.isInteger(year) || !location?.license || location.license !== "cc-by") return null;
+  const authorNames = [...new Set((work.authorships ?? []).map((item) => item.author?.display_name?.trim()).filter((name): name is string => Boolean(name)))];
+  const authors = authorNames.length > 4 ? `${authorNames.slice(0, 4).join(", ")}, et al.` : authorNames.join(", ");
+  const institutions = [...new Set((work.authorships ?? []).flatMap((item) => item.institutions ?? []).map((item) => item.display_name?.trim()).filter((name): name is string => Boolean(name)))];
+  const doi = work.doi?.trim() || null;
+  const sourceUrl = location.landing_page_url?.trim() || doi || "";
+  if (!sourceUrl) return null;
+  try {
+    const parsedUrl = new URL(sourceUrl);
+    if (parsedUrl.protocol !== "http:" && parsedUrl.protocol !== "https:") return null;
+  } catch {
+    return null;
+  }
+  const domain = work.topics?.[0]?.subfield?.display_name?.trim()
+    || work.topics?.[0]?.field?.display_name?.trim()
+    || "Computer Science";
+  return {
+    title: title.slice(0, 240),
+    authors: (authors || "Penulis tidak tercatat").slice(0, 240),
+    year: Number(year),
+    institution: (institutions.slice(0, 2).join("; ") || "Institusi tidak tercantum").slice(0, 180),
+    summary,
+    sourceName: (location.source?.display_name?.trim() || "Jurnal akademik").slice(0, 180),
+    sourceUrl,
+    domain: domain.slice(0, 80),
+    methods: [],
+    technologies: [],
+    isDemo: false,
+    externalId: id,
+    doi,
+    license: location.license,
+    language: work.language ?? "en",
+  };
+}
+
+async function fetchPage(search: string, cursor: string, perPage: number): Promise<OpenAlexResponse> {
+  const url = new URL(OPENALEX_API);
+  url.searchParams.set("search", search);
+  url.searchParams.set("filter", "type:article,has_abstract:true,primary_location.license:cc-by,language:en");
+  url.searchParams.set("per_page", String(perPage));
+  url.searchParams.set("cursor", cursor);
+  url.searchParams.set("select", "id,doi,title,publication_year,authorships,primary_location,language,abstract_inverted_index,topics");
+  const email = process.env.OPENALEX_EMAIL;
+  if (email) url.searchParams.set("mailto", email);
+  const apiKey = process.env.OPENALEX_API_KEY;
+  if (apiKey) url.searchParams.set("api_key", apiKey);
+  for (let attempt = 0; attempt < 4; attempt += 1) {
+    const response = await fetch(url, { headers: { "user-agent": "RisetTI/1.0 (open research catalog import)" } });
+    if (response.ok) return await response.json() as OpenAlexResponse;
+    if (response.status !== 429 && response.status < 500) throw new Error(`OpenAlex mengembalikan HTTP ${response.status}.`);
+    if (attempt === 3) throw new Error(`OpenAlex masih membatasi permintaan (HTTP ${response.status}).`);
+    await new Promise((resolve) => setTimeout(resolve, 1000 * (2 ** attempt)));
+  }
+  throw new Error("OpenAlex tidak memberikan respons yang dapat diproses.");
+}
+
+async function main(): Promise<void> {
+  const limit = option("limit", 3000);
+  const perPage = Math.min(100, option("page-size", 100));
+  const searches = stringOption("search") ? [stringOption("search")!] : TOPIC_SEARCHES;
+  const db = createDatabase(process.env.DATABASE_PATH ?? "./data/risetti.sqlite");
+  const insertBatch = db.transaction((items: ReferenceInput[]) => items.reduce((count, item) => count + Number(insertImportedReference(db, item)), 0));
+  const seen = new Set<string>();
+  let inserted = 0;
+  let requests = 0;
+  try {
+    for (const search of searches) {
+      let cursor = "*";
+      while (inserted < limit && cursor) {
+        const response = await fetchPage(search, cursor, perPage);
+        requests += 1;
+        const batch: ReferenceInput[] = [];
+        for (const work of response.results ?? []) {
+          const reference = toReference(work);
+          if (!reference || !reference.externalId || seen.has(reference.externalId)) continue;
+          seen.add(reference.externalId);
+          batch.push(reference);
+          if (batch.length >= Math.min(perPage, limit - inserted)) break;
+        }
+        inserted += insertBatch(batch);
+        if (inserted % 300 < batch.length || inserted === limit) console.info(`OpenAlex ${inserted}/${limit} referensi baru; ${requests} permintaan.`);
+        cursor = response.meta?.next_cursor ?? "";
+        if (!batch.length && !cursor) break;
+      }
+      if (inserted >= limit) break;
+    }
+    if (inserted < limit) throw new Error(`Hanya ${inserted} referensi baru yang tersedia; target ${limit}. Jalankan ulang agar pencarian dilanjutkan dengan sumber yang masih belum tersimpan.`);
+    const total = (db.prepare("SELECT count(*) AS count FROM catalog_references WHERE archived_at IS NULL").get() as { count: number }).count;
+    console.info(`Selesai: ${inserted} artikel baru, ${total} referensi aktif total. Data lama tetap dipertahankan.`);
+  } finally {
+    db.close();
+  }
+}
+
+main().catch((error: unknown) => {
+  console.error(error instanceof Error ? error.message : error);
+  process.exitCode = 1;
+});

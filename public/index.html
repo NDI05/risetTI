@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f7f8f4" />
+    <meta name="description" content="Jelajahi referensi tugas akhir TI dan susun informasi awal ide dengan RisetTI." />
+    <title>RisetTI — Temukan pijakan riset berikutnya</title>
+    <link rel="stylesheet" href="/styles.css?v=3" />
+    <script type="module" src="/app.js?v=3"></script>
+  </head>
+  <body>
+    <div class="announcement-bar"><span class="announcement-mark" aria-hidden="true">✳</span><span>Artikel CC-BY dari OpenAlex dan karya akhir UGM · Bantuan AI berjalan lokal</span><button class="announcement-link" data-view="ideas">Mulai dari ide Anda ↗</button></div>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="RisetTI, beranda">
+        <span class="brand-mark" aria-hidden="true">r.</span>
+        <span><strong>RisetTI</strong><small>Temukan arah, mulai dari data.</small></span>
+      </a>
+      <nav class="primary-nav" aria-label="Navigasi utama">
+        <button class="nav-link" data-view="ideas">Rancang ide</button>
+        <button class="nav-link active" data-view="catalog">Katalog</button>
+        <button class="nav-link" data-view="shortlist">Shortlist <span id="shortlist-count" class="nav-count hidden">0</span></button>
+        <button class="nav-link hidden" id="admin-nav" data-view="admin">Admin katalog</button>
+      </nav>
+      <div class="header-actions">
+        <div id="ai-status" class="ai-pill" role="status" title="Status bantuan AI lokal">
+          <span class="status-dot"></span><span>Memeriksa Ollama…</span>
+        </div>
+        <div id="account-actions" class="account-actions"></div>
+      </div>
+    </header>
+
+    <main class="page-shell">
+      <section id="catalog-view" class="view">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">RUANG EKSPLORASI RISET TEKNOLOGI</p>
+            <h1>Temukan akar<br />pertanyaan <em>riset Anda.</em></h1>
+            <p class="hero-description">Satu ide awal bisa membuka banyak arah. Temukan pijakan dari karya nyata, lalu susun pertanyaan yang perlu Anda jawab.</p>
+            <div class="hero-actions"><button class="button button-primary" data-view="ideas">Mulai rancangan <span aria-hidden="true">↗</span></button><a class="button button-secondary" href="#catalog-title">Jelajahi katalog <span aria-hidden="true">↘</span></a></div>
+          </div>
+          <div class="hero-mosaic" aria-label="Ringkasan fitur RisetTI">
+            <article class="mosaic-card mosaic-green"><span class="mosaic-kicker">KATALOG AKADEMIK</span><div class="mosaic-orbit" aria-hidden="true"><i></i><i></i><i></i><b></b></div><div class="mosaic-bottom"><div><strong id="hero-catalog-total">32</strong><span>rekaman sumber</span></div><p>Artikel terbuka dan karya akhir untuk menemukan pijakan riset.</p></div><a href="#catalog-title" aria-label="Jelajahi katalog">Lihat katalog ↗</a></article>
+            <article class="mosaic-card mosaic-lilac"><span class="mosaic-kicker">ASISTEN LOKAL</span><div class="mosaic-glyph" aria-hidden="true">✳</div><div><h2>Gemma, di komputer Anda.</h2><p id="hero-ai-copy">Bantuan riset tetap berjalan lokal.</p></div><span class="mosaic-status"><i></i><span id="hero-ai-status">Memeriksa Ollama</span></span></article>
+            <article class="mosaic-card mosaic-orange"><span class="mosaic-kicker">MULAI DARI YANG BELUM PASTI</span><div class="mosaic-quote">“Saya tertarik pada...”</div><div><h2>Pertanyaan kecil, arah baru.</h2><p>Rapikan ide tanpa harus tahu semua jawabannya sejak awal.</p></div><button data-view="ideas" aria-label="Mulai menyusun ide">Mulai merangkai ↗</button></article>
+          </div>
+        </div>
+
+        <section class="ai-discovery" aria-labelledby="ai-search-title">
+          <div class="ai-discovery-copy"><p class="eyebrow">ASISTEN RISET LOKAL</p><h2>Mulai pencarian dari hal yang ingin Anda pahami.</h2><p>Gemma membantu mengubah pertanyaan awal menjadi kata kunci untuk katalog. Anda tetap menentukan arah dan memeriksa sumbernya.</p><div class="privacy-note"><span aria-hidden="true">◉</span> Pertanyaan diproses oleh Ollama di komputer lokal.</div></div>
+          <aside class="ai-search-card" aria-labelledby="ai-search-title">
+            <div class="card-kicker"><span class="sparkle">✳</span> BANTU CARI REFERENSI</div>
+            <h2 id="ai-search-title">Apa yang ingin Anda telusuri?</h2>
+            <p id="ai-inline-status" class="ai-state-note" role="status">Memeriksa koneksi ke Ollama lokal…</p>
+            <form id="ai-search-form">
+              <label class="sr-only" for="ai-question">Ceritakan hal yang ingin Anda teliti</label>
+              <textarea id="ai-question" rows="3" maxlength="1000" placeholder="Contoh: Saya ingin memahami penyebab mahasiswa terlambat mengembalikan obat…"></textarea>
+              <div class="ai-card-footer"><span class="privacy-note"><span aria-hidden="true">◉</span> Lokal dan privat</span><button class="button button-primary" type="submit" id="ai-search-submit">Bantu cari <span aria-hidden="true">↗</span></button></div>
+            </form>
+            <div id="keyword-suggestions" class="suggestion-list hidden" aria-live="polite"></div>
+          </aside>
+        </section>
+
+        <div class="demo-banner"><span class="demo-icon">i</span><span><strong>Periksa sumber:</strong> setiap kartu mengarah ke rekaman asli. Metadata membantu penelusuran, bukan pengganti membaca penelitian lengkap.</span></div>
+
+        <section class="catalog-section" aria-labelledby="catalog-title">
+          <div class="section-heading">
+            <div><p class="eyebrow">JELAJAHI REFERENSI</p><h2 id="catalog-title">Katalog tugas akhir</h2></div>
+            <p class="section-aside">Cari berdasarkan kata kunci, bidang, metode, atau teknologi.</p>
+          </div>
+          <form id="catalog-search" class="filter-panel">
+            <label class="filter-keyword"><span>Kata kunci</span><div class="input-with-icon"><span aria-hidden="true">⌕</span><input id="filter-query" name="q" type="search" placeholder="Contoh: smart farming, klasifikasi teks, usability" maxlength="120" /></div></label>
+            <label><span>Bidang</span><select id="filter-domain"><option value="">Semua bidang</option></select></label>
+            <label><span>Metode</span><select id="filter-method"><option value="">Semua metode</option></select></label>
+            <label><span>Teknologi</span><select id="filter-technology"><option value="">Semua teknologi</option></select></label>
+            <div class="filter-buttons"><button class="button button-primary" type="submit">Cari referensi</button><button class="button button-quiet" id="reset-search" type="button">Atur ulang</button></div>
+          </form>
+          <div class="results-bar"><p id="catalog-count" aria-live="polite">Memuat katalog…</p><span>Urut berdasarkan tahun terbaru</span></div>
+          <div id="catalog-results" class="reference-grid"></div>
+          <div class="catalog-more-wrap"><button class="button button-secondary hidden" id="catalog-load-more" type="button">Muat lebih banyak</button></div>
+          <div id="catalog-empty" class="empty-state hidden"><span class="empty-mark">⌕</span><h3>Belum ada yang cocok</h3><p>Semua kata kunci dan filter harus cocok. Coba 1–2 kata kunci, kurangi filter, atau tambahkan referensi dari Admin katalog.</p><button class="button button-quiet" id="empty-reset">Hapus filter</button></div>
+        </section>
+      </section>
+
+      <section id="shortlist-view" class="view hidden">
+        <div class="page-heading"><div><p class="eyebrow">REFERENSI PILIHAN</p><h1>Shortlist Anda</h1><p>Simpan referensi yang ingin dibandingkan atau dijadikan pijakan lembar ide.</p></div><button class="button button-secondary" data-view="catalog">Jelajahi katalog <span aria-hidden="true">↗</span></button></div>
+        <div class="selection-toolbar"><div><strong id="selection-count">0 referensi dipilih</strong><small>Pilih hingga 8 referensi untuk membuat ringkasan draf.</small></div><button class="button button-dark" id="summarize-button" disabled>Ringkas referensi dengan AI</button></div>
+        <div id="summary-result" class="ai-result hidden" aria-live="polite"></div>
+        <div id="shortlist-results" class="reference-grid"></div>
+        <div id="shortlist-empty" class="empty-state hidden"><span class="empty-mark">＋</span><h3>Shortlist masih kosong</h3><p>Simpan referensi dari katalog untuk kembali membacanya di sini.</p><button class="button button-primary" data-view="catalog">Lihat katalog</button></div>
+      </section>
+
+      <section id="ideas-view" class="view hidden">
+        <div class="page-heading"><div><p class="eyebrow">RUANG KERJA PRIBADI</p><h1>Mulai rancangan dari ide Anda</h1><p>Ceritakan ide dan panduannya. Referensi dicari otomatis dari katalog dan ditautkan ke bagian rancangan yang didukung.</p></div><button class="button button-secondary" id="new-idea">＋ Ide baru</button></div>
+        <div class="idea-layout">
+          <aside class="idea-sidebar">
+            <div class="sidebar-card"><label for="idea-picker">Draf tersimpan</label><select id="idea-picker"><option value="">Pilih lembar ide</option></select><button id="delete-idea" class="text-button danger hidden" type="button">Hapus lembar ini</button></div>
+            <div class="sidebar-note"><span class="note-icon">✳</span><div><strong>Mulai dari yang Anda tahu.</strong><p>Jawab yang sudah diketahui; pertanyaan yang belum bisa dijawab boleh dilewati.</p></div></div>
+            <div class="reference-picker-card automatic-sources-note"><h3>Sumber dicari otomatis</h3><p>Jurnal dan karya akhir yang paling relevan akan dicari dari judul serta jawaban Anda. Tautannya muncul di setiap bagian hasil yang didukung.</p></div>
+          </aside>
+          <div class="worksheet-wrap">
+            <div class="worksheet-head"><div><span class="draft-badge">RUANG IDE</span><h2 id="idea-stage-title">Mulai dari ide kasar</h2></div><span class="save-status" id="save-status">Belum disimpan</span></div>
+            <div class="draft-notice"><strong>Catatan:</strong> jawaban yang belum diketahui boleh dilewati. AI membantu merapikan gagasan; hasilnya bukan penilaian kelayakan atau persetujuan akademik.</div>
+            <section id="idea-intake-stage" class="idea-stage" aria-labelledby="idea-stage-title">
+              <label class="intake-title-field" for="intake-title"><span>Tulis ide atau judul sementara</span><textarea id="intake-title" maxlength="120" rows="2" placeholder="Contoh: Keterlambatan dalam pengembalian obat"></textarea><small>Belum perlu menjadi judul penelitian yang sempurna.</small></label>
+              <div class="intake-section-head"><div><h3>Pertanyaan panduan</h3><p>AI akan menyesuaikannya dengan ide Anda. Hapus yang tidak relevan atau tambahkan pertanyaan sendiri.</p></div><span id="intake-question-count" class="question-count">0 pertanyaan</span></div>
+              <div id="intake-question-list" class="intake-question-list" aria-live="polite"></div>
+              <div class="intake-actions">
+                <button class="button button-dark" type="button" id="intake-ai-questions" disabled>✳ <span>Buat pertanyaan panduan</span></button>
+                <button class="button button-secondary" type="button" id="add-intake-question">＋ Pertanyaan sendiri</button>
+              </div>
+              <div class="intake-footer"><span id="intake-hint" class="action-explainer">Isi ide awal, lalu buat pertanyaan yang lebih sesuai.</span><button class="button button-primary" type="button" id="generate-idea-button" disabled>Susun rancangan</button></div>
+            </section>
+            <section id="idea-result-stage" class="idea-stage hidden" aria-live="polite"></section>
+          </div>
+        </div>
+      </section>
+
+      <section id="admin-view" class="view hidden">
+        <div class="page-heading"><div><p class="eyebrow">PENGELOLAAN REFERENSI</p><h1>Admin katalog</h1><p>Kelola metadata sumber yang boleh ditampilkan. Pengarsipan menyembunyikan referensi dari mahasiswa.</p></div><span class="role-badge">Admin katalog</span></div>
+        <div class="admin-layout">
+          <form id="reference-form" class="admin-form">
+            <div class="worksheet-head"><div><span class="draft-badge">METADATA SUMBER</span><h2 id="admin-form-title">Tambah referensi</h2></div><button class="text-button hidden" id="cancel-edit" type="button">Batalkan sunting</button></div>
+            <label><span>Judul <b>*</b></span><input name="title" maxlength="240" required /></label>
+            <div class="admin-two-col"><label><span>Penulis <b>*</b></span><input name="authors" maxlength="240" required /></label><label><span>Tahun <b>*</b></span><input name="year" type="number" min="1980" max="2100" value="2026" required /></label></div>
+            <div class="admin-two-col"><label><span>Institusi <b>*</b></span><input name="institution" maxlength="180" required /></label><label><span>Nama sumber <b>*</b></span><input name="sourceName" maxlength="180" required placeholder="Jurnal, repositori, atau penerbit" /></label></div>
+            <label><span>Tautan sumber</span><input name="sourceUrl" type="url" maxlength="1000" placeholder="https://… (wajib untuk referensi noncontoh)" /></label>
+            <label><span>Bidang <b>*</b></span><input name="domain" maxlength="80" required placeholder="Contoh: Rekayasa Perangkat Lunak" /></label>
+            <div class="admin-two-col"><label><span>Metode (pisahkan dengan koma)</span><input name="methods" maxlength="500" placeholder="Survei, prototyping" /></label><label><span>Teknologi (pisahkan dengan koma)</span><input name="technologies" maxlength="500" placeholder="Python, PostgreSQL" /></label></div>
+            <label><span>Ringkasan <b>*</b></span><textarea name="summary" maxlength="4000" rows="5" required></textarea></label>
+            <label class="checkbox-line"><input name="isDemo" type="checkbox" /><span>Ini data demonstrasi, bukan penelitian nyata</span></label>
+            <div class="admin-form-actions"><button class="button button-primary" type="submit" id="admin-save">Simpan referensi</button></div>
+          </form>
+          <div class="admin-list-panel"><div class="list-panel-heading"><div><p class="eyebrow">KATALOG</p><h2>Referensi tersimpan</h2></div><span id="admin-ref-count"></span></div><div id="admin-reference-list" class="admin-reference-list"></div></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer"><span>RisetTI <span class="footer-dot">·</span> Alat bantu eksplorasi ide tugas akhir</span><span>Artikel memuat atribusi, lisensi, dan tautan sumber <span class="footer-dot">·</span> AI berjalan lokal</span></footer>
+
+    <dialog id="auth-dialog" class="auth-dialog">
+      <form id="auth-form" class="auth-card" method="dialog">
+        <button type="button" class="dialog-close" id="close-auth" aria-label="Tutup">×</button>
+        <div class="auth-mark">R</div>
+        <p class="eyebrow" id="auth-eyebrow">AKUN RISETTI</p>
+        <h2 id="auth-title">Masuk ke RisetTI</h2>
+        <p id="auth-description">Simpan referensi dan lembar ide di ruang pribadi Anda.</p>
+        <label id="auth-name-label" class="hidden"><span>Nama</span><input name="name" maxlength="80" autocomplete="name" /></label>
+        <label><span>Email</span><input name="email" type="email" maxlength="254" autocomplete="email" required /></label>
+        <label><span>Kata sandi</span><input name="password" type="password" minlength="12" maxlength="200" autocomplete="current-password" required /></label>
+        <p class="form-help" id="auth-password-help">Gunakan kata sandi 12 karakter atau lebih.</p>
+        <p class="inline-error hidden" id="auth-error" role="alert"></p>
+        <button class="button button-primary auth-submit" type="submit" id="auth-submit">Masuk</button>
+        <p class="auth-switch"><span id="auth-switch-text">Belum punya akun?</span> <button type="button" class="text-button" id="toggle-auth-mode">Buat akun mahasiswa</button></p>
+      </form>
+    </dialog>
+
+    <dialog id="reference-dialog" class="reference-dialog"><div id="reference-detail"></div></dialog>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
