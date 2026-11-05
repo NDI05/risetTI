@@ -12,7 +12,15 @@
     "start": "node dist/src/server.js",
     "backup": "node scripts/backup-database.mjs",
     "import:openalex": "tsx scripts/import-openalex.ts",
-    "lint": "eslint src tests scripts public/app.js",
+    "cf:dev": "wrangler dev",
+    "cf:db:create": "wrangler d1 create risetti-db",
+    "cf:migrate:local": "wrangler d1 migrations apply DB --local",
+    "cf:migrate:remote": "wrangler d1 migrations apply DB --remote",
+    "cf:deploy": "wrangler d1 migrations apply DB --remote && wrangler deploy",
+    "cf:typegen": "wrangler types",
+    "cf:typecheck": "tsc --noEmit -p tsconfig.worker.json",
+    "cf:seed:generate": "node --import tsx scripts/export-cloudflare-seed.mjs",
+    "lint": "eslint src tests scripts worker public/app.js",
     "typecheck": "tsc --noEmit -p tsconfig.json",
     "test": "vitest run tests"
   },
@@ -26,6 +34,7 @@
     "qs": "6.16.1"
   },
   "devDependencies": {
+    "@cloudflare/workers-types": "^5.20261104.1",
     "@types/better-sqlite3": "^7.6.13",
     "@types/express": "^5.0.3",
     "@types/node": "^24.3.0",
@@ -36,6 +45,7 @@
     "supertest": "^7.1.4",
     "tsx": "^4.20.5",
     "typescript": "^5.9.2",
-    "vitest": "^5.0.3"
+    "vitest": "^5.0.3",
+    "wrangler": "^4.158.0"
   }
 }

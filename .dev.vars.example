@@ -1,0 +1,5 @@
+# Optional: provide a long random value to pseudonymize IPs in the D1 auth rate-limit table.
+AUTH_RATE_LIMIT_SECRET=replace-with-a-long-random-secret
+
+# Required once to create the first admin through POST /api/auth/admin-setup.
+ADMIN_SETUP_TOKEN=replace-with-a-different-long-random-secret

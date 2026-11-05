@@ -1,4 +1,9 @@
 import "dotenv/config";
+import { execFile } from "node:child_process";
+import { mkdtemp, rm, writeFile } from "node:fs/promises";
+import { tmpdir } from "node:os";
+import { join, resolve } from "node:path";
+import { promisify } from "node:util";
 import { createDatabase, insertImportedReference } from "../src/db.js";
 import type { ReferenceInput } from "../src/types.js";
 
@@ -77,6 +82,40 @@ function stringOption(name: string): string | null {
   return value;
 }
 
+function sql(value: string | number | null | undefined): string {
+  if (value === null || value === undefined) return "NULL";
+  if (typeof value === "number") return String(value);
+  return `'${value.replaceAll("'", "''")}'`;
+}
+
+async function insertCloudflareBatch(items: ReferenceInput[]): Promise<void> {
+  if (!items.length) return;
+  const now = new Date().toISOString();
+  const statements: string[] = [];
+  for (const item of items) {
+    if (!item.externalId) throw new Error("Referensi OpenAlex tidak memiliki ID eksternal.");
+    statements.push(`INSERT OR IGNORE INTO catalog_references
+      (title, authors, year, institution, summary, source_name, source_url, is_demo, external_id, doi, license, language, created_at, updated_at)
+      VALUES (${[
+        item.title, item.authors, item.year, item.institution, item.summary, item.sourceName, item.sourceUrl, 0,
+        item.externalId, item.doi ?? null, item.license ?? null, item.language ?? null, now, now,
+      ].map(sql).join(", ")});`);
+    statements.push(`INSERT OR IGNORE INTO reference_tags (reference_id, tag_type, tag)
+      SELECT id, 'domain', ${sql(item.domain)} FROM catalog_references WHERE external_id = ${sql(item.externalId)};`);
+  }
+
+  const directory = await mkdtemp(join(tmpdir(), "risetti-openalex-"));
+  const file = join(directory, "batch.sql");
+  try {
+    await writeFile(file, `${statements.join("\n")}\n`, { mode: 0o600 });
+    await promisify(execFile)(resolve("node_modules/.bin/wrangler"), ["d1", "execute", "DB", "--remote", `--file=${file}`], {
+      cwd: process.cwd(), maxBuffer: 1024 * 1024, encoding: "utf8",
+    });
+  } finally {
+    await rm(directory, { recursive: true, force: true });
+  }
+}
+
 function reconstructAbstract(index: OpenAlexWork["abstract_inverted_index"]): string {
   if (!index) return "";
   const words: string[] = [];
@@ -149,11 +188,13 @@ async function fetchPage(search: string, cursor: string, perPage: number): Promi
 }
 
 async function main(): Promise<void> {
+  const target = stringOption("target") ?? "local";
+  if (target !== "local" && target !== "cloudflare") throw new Error("--target harus berupa local atau cloudflare.");
   const limit = option("limit", 3000);
   const perPage = Math.min(100, option("page-size", 100));
   const searches = stringOption("search") ? [stringOption("search")!] : TOPIC_SEARCHES;
-  const db = createDatabase(process.env.DATABASE_PATH ?? "./data/risetti.sqlite");
-  const insertBatch = db.transaction((items: ReferenceInput[]) => items.reduce((count, item) => count + Number(insertImportedReference(db, item)), 0));
+  const db = target === "local" ? createDatabase(process.env.DATABASE_PATH ?? "./data/risetti.sqlite") : null;
+  const insertBatch = db ? db.transaction((items: ReferenceInput[]) => items.reduce((count, item) => count + Number(insertImportedReference(db, item)), 0)) : null;
   const seen = new Set<string>();
   let inserted = 0;
   let requests = 0;
@@ -171,18 +212,32 @@ async function main(): Promise<void> {
           batch.push(reference);
           if (batch.length >= Math.min(perPage, limit - inserted)) break;
         }
-        inserted += insertBatch(batch);
-        if (inserted % 300 < batch.length || inserted === limit) console.info(`OpenAlex ${inserted}/${limit} referensi baru; ${requests} permintaan.`);
+        if (insertBatch) inserted += insertBatch(batch);
+        else {
+          for (let start = 0; start < batch.length; start += 25) {
+            const chunk = batch.slice(start, start + 25);
+            await insertCloudflareBatch(chunk);
+            inserted += chunk.length;
+          }
+        }
+        if (inserted % 300 < batch.length || inserted === limit) {
+          const progressLabel = target === "cloudflare" ? "artikel diproses" : "referensi baru";
+          console.info(`OpenAlex ${inserted}/${limit} ${progressLabel}; ${requests} permintaan.`);
+        }
         cursor = response.meta?.next_cursor ?? "";
         if (!batch.length && !cursor) break;
       }
       if (inserted >= limit) break;
     }
     if (inserted < limit) throw new Error(`Hanya ${inserted} referensi baru yang tersedia; target ${limit}. Jalankan ulang agar pencarian dilanjutkan dengan sumber yang masih belum tersimpan.`);
-    const total = (db.prepare("SELECT count(*) AS count FROM catalog_references WHERE archived_at IS NULL").get() as { count: number }).count;
-    console.info(`Selesai: ${inserted} artikel baru, ${total} referensi aktif total. Data lama tetap dipertahankan.`);
+    if (db) {
+      const total = (db.prepare("SELECT count(*) AS count FROM catalog_references WHERE archived_at IS NULL").get() as { count: number }).count;
+      console.info(`Selesai: ${inserted} artikel baru, ${total} referensi aktif total. Data lama tetap dipertahankan.`);
+    } else {
+      console.info(`Selesai: ${inserted} artikel berlisensi CC-BY dikirim ke D1. Data duplikat diabaikan oleh database.`);
+    }
   } finally {
-    db.close();
+    db?.close();
   }
 }
 

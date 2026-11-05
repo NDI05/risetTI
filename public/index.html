@@ -7,10 +7,10 @@
     <meta name="description" content="Jelajahi referensi tugas akhir TI dan susun informasi awal ide dengan RisetTI." />
     <title>RisetTI — Temukan pijakan riset berikutnya</title>
     <link rel="stylesheet" href="/styles.css?v=3" />
-    <script type="module" src="/app.js?v=3"></script>
+    <script type="module" src="/app.js?v=4"></script>
   </head>
   <body>
-    <div class="announcement-bar"><span class="announcement-mark" aria-hidden="true">✳</span><span>Artikel CC-BY dari OpenAlex dan karya akhir UGM · Bantuan AI berjalan lokal</span><button class="announcement-link" data-view="ideas">Mulai dari ide Anda ↗</button></div>
+    <div class="announcement-bar"><span class="announcement-mark" aria-hidden="true">✳</span><span>Artikel CC-BY dari OpenAlex dan karya akhir UGM · Bantuan AI mengikuti konfigurasi aplikasi</span><button class="announcement-link" data-view="ideas">Mulai dari ide Anda ↗</button></div>
     <header class="site-header">
       <a class="brand" href="/" aria-label="RisetTI, beranda">
         <span class="brand-mark" aria-hidden="true">r.</span>
@@ -23,8 +23,8 @@
         <button class="nav-link hidden" id="admin-nav" data-view="admin">Admin katalog</button>
       </nav>
       <div class="header-actions">
-        <div id="ai-status" class="ai-pill" role="status" title="Status bantuan AI lokal">
-          <span class="status-dot"></span><span>Memeriksa Ollama…</span>
+        <div id="ai-status" class="ai-pill" role="status" title="Status penyedia bantuan AI">
+          <span class="status-dot"></span><span>Memeriksa AI…</span>
         </div>
         <div id="account-actions" class="account-actions"></div>
       </div>
@@ -41,21 +41,21 @@
           </div>
           <div class="hero-mosaic" aria-label="Ringkasan fitur RisetTI">
             <article class="mosaic-card mosaic-green"><span class="mosaic-kicker">KATALOG AKADEMIK</span><div class="mosaic-orbit" aria-hidden="true"><i></i><i></i><i></i><b></b></div><div class="mosaic-bottom"><div><strong id="hero-catalog-total">32</strong><span>rekaman sumber</span></div><p>Artikel terbuka dan karya akhir untuk menemukan pijakan riset.</p></div><a href="#catalog-title" aria-label="Jelajahi katalog">Lihat katalog ↗</a></article>
-            <article class="mosaic-card mosaic-lilac"><span class="mosaic-kicker">ASISTEN LOKAL</span><div class="mosaic-glyph" aria-hidden="true">✳</div><div><h2>Gemma, di komputer Anda.</h2><p id="hero-ai-copy">Bantuan riset tetap berjalan lokal.</p></div><span class="mosaic-status"><i></i><span id="hero-ai-status">Memeriksa Ollama</span></span></article>
+            <article class="mosaic-card mosaic-lilac"><span class="mosaic-kicker">ASISTEN AI</span><div class="mosaic-glyph" aria-hidden="true">✳</div><div><h2>Bantuan untuk merangkai ide.</h2><p id="hero-ai-copy">Memeriksa penyedia AI.</p></div><span class="mosaic-status"><i></i><span id="hero-ai-status">Memeriksa AI</span></span></article>
             <article class="mosaic-card mosaic-orange"><span class="mosaic-kicker">MULAI DARI YANG BELUM PASTI</span><div class="mosaic-quote">“Saya tertarik pada...”</div><div><h2>Pertanyaan kecil, arah baru.</h2><p>Rapikan ide tanpa harus tahu semua jawabannya sejak awal.</p></div><button data-view="ideas" aria-label="Mulai menyusun ide">Mulai merangkai ↗</button></article>
           </div>
         </div>
 
         <section class="ai-discovery" aria-labelledby="ai-search-title">
-          <div class="ai-discovery-copy"><p class="eyebrow">ASISTEN RISET LOKAL</p><h2>Mulai pencarian dari hal yang ingin Anda pahami.</h2><p>Gemma membantu mengubah pertanyaan awal menjadi kata kunci untuk katalog. Anda tetap menentukan arah dan memeriksa sumbernya.</p><div class="privacy-note"><span aria-hidden="true">◉</span> Pertanyaan diproses oleh Ollama di komputer lokal.</div></div>
+          <div class="ai-discovery-copy"><p class="eyebrow">ASISTEN RISET</p><h2>Mulai pencarian dari hal yang ingin Anda pahami.</h2><p>AI membantu mengubah pertanyaan awal menjadi kata kunci untuk katalog. Anda tetap menentukan arah dan memeriksa sumbernya.</p><div class="privacy-note"><span aria-hidden="true">◉</span> Pemrosesan mengikuti konfigurasi AI aplikasi.</div></div>
           <aside class="ai-search-card" aria-labelledby="ai-search-title">
             <div class="card-kicker"><span class="sparkle">✳</span> BANTU CARI REFERENSI</div>
             <h2 id="ai-search-title">Apa yang ingin Anda telusuri?</h2>
-            <p id="ai-inline-status" class="ai-state-note" role="status">Memeriksa koneksi ke Ollama lokal…</p>
+            <p id="ai-inline-status" class="ai-state-note" role="status">Memeriksa koneksi ke penyedia AI…</p>
             <form id="ai-search-form">
               <label class="sr-only" for="ai-question">Ceritakan hal yang ingin Anda teliti</label>
               <textarea id="ai-question" rows="3" maxlength="1000" placeholder="Contoh: Saya ingin memahami penyebab mahasiswa terlambat mengembalikan obat…"></textarea>
-              <div class="ai-card-footer"><span class="privacy-note"><span aria-hidden="true">◉</span> Lokal dan privat</span><button class="button button-primary" type="submit" id="ai-search-submit">Bantu cari <span aria-hidden="true">↗</span></button></div>
+              <div class="ai-card-footer"><span id="ai-provider-note" class="privacy-note"><span aria-hidden="true">◉</span> Memeriksa pemrosesan AI</span><button class="button button-primary" type="submit" id="ai-search-submit">Bantu cari <span aria-hidden="true">↗</span></button></div>
             </form>
             <div id="keyword-suggestions" class="suggestion-list hidden" aria-live="polite"></div>
           </aside>

@@ -25,6 +25,71 @@ ollama pull gemma4:e2b-it-q4_K_M
 
 Jika Ollama atau model tidak tersedia, pencarian katalog, shortlist, dan pengisian manual tetap berfungsi.
 
+## Deployment Cloudflare Workers + D1 + Workers AI
+
+Cloudflare memakai backend Worker tersendiri agar API tetap kompatibel dengan antarmuka yang sama. Berkas statis disajikan oleh Workers Assets, data berada di D1, dan model default adalah `@cf/meta/llama-3.3-70b-instruct-fp8-fast`. Jalur Express, SQLite, dan Ollama lokal tetap tersedia untuk pengembangan di Mac.
+
+### Persiapan akun dan database
+
+Perlu Node.js 22+, npm, dan akun Cloudflare. Instal dependensi, masuk lewat Wrangler, lalu buat database D1 baru bernama `risetti-db`:
+
+```sh
+npm ci
+npx wrangler login
+npm run cf:db:create
+```
+
+Salin `database_id` yang ditampilkan Wrangler ke objek `d1_databases` di `wrangler.jsonc`. Pastikan namanya tetap `risetti-db`. Buat dua secret acak secara lokal dan simpan dengan perintah berikut; jangan masukkan nilainya ke Git:
+
+```sh
+npx wrangler secret put ADMIN_SETUP_TOKEN
+npx wrangler secret put AUTH_RATE_LIMIT_SECRET
+```
+
+Jalankan `npm run cf:deploy`. Perintah tersebut menerapkan migrasi D1 lalu mengunggah Worker beserta aset web. Migrasi membuat tabel dan menambahkan **32 rekaman katalog awal** dari ETD UGM. Migrasi tidak memindahkan akun, shortlist, atau ide yang tersimpan di SQLite lokal.
+
+Jika katalog cloud perlu diperluas untuk uji pencarian, skrip OpenAlex yang sama dapat menulis metadata artikel CC-BY langsung ke D1. Akun Cloudflare harus sudah terautentikasi di Wrangler dan database D1 sudah termigrasi:
+
+```sh
+npm run import:openalex -- --target cloudflare --limit 3000
+```
+
+Skrip mengirim batch kecil, mempertahankan rekaman yang sudah ada, dan mengabaikan ID OpenAlex duplikat. Batas target maksimal 100.000 rekaman per proses. Hanya metadata dan abstrak berlisensi CC-BY yang diterima; akun serta ide mahasiswa tidak disentuh. OpenAlex dapat meminta API key atau membatasi kecepatan permintaan; set `OPENALEX_API_KEY` di environment terminal bila akun Anda memilikinya.
+
+### Membuat admin pertama
+
+Setelah deployment selesai, buat akun admin pertama satu kali melalui endpoint penyiapan. Gunakan token yang sama dengan secret `ADMIN_SETUP_TOKEN`; isi email dan kata sandi lewat terminal lokal, jangan lewat chat:
+
+```sh
+curl -X POST https://NAMA-WORKER.workers.dev/api/auth/admin-setup \
+  -H 'Content-Type: application/json' \
+  -d '{"setupToken":"TOKEN-ANDA","name":"Admin RisetTI","email":"admin@example.org","password":"KATA-SANDI-PANJANG-UNIK"}'
+```
+
+Endpoint otomatis tertutup setelah admin pertama dibuat. Setelah itu, masuk melalui tombol **Masuk** di website. Pendaftaran umum hanya membuat akun mahasiswa.
+
+### Preview dan pembaruan
+
+Untuk memakai D1 lokal Wrangler:
+
+```sh
+npm run cf:migrate:local
+npm run cf:dev
+```
+
+Workers AI memakai model yang ditetapkan pada `AI_MODEL` di `wrangler.jsonc`. Ganti model hanya dengan model yang tersedia untuk akun dan mendukung JSON Mode. Inferensi AI selalu menghubungi Cloudflare, termasuk saat `wrangler dev`, dan menggunakan kuota akun. Worker memeriksa bentuk JSON dan ID sitasi sebelum mengembalikan hasil. Keluaran AI tetap draf, bukan penilaian kelayakan.
+
+Untuk memeriksa tipe Worker setelah mengubah binding:
+
+```sh
+npm run cf:typegen
+npm run cf:typecheck
+```
+
+Workers Free memiliki batas CPU 10 ms per request; Workers AI gratis memiliki alokasi 10.000 Neurons per hari, dan penggunaan yang melebihi batas harian berhenti sampai kuota direset. D1 Free mencakup 5 juta baris terbaca dan 100.000 baris tertulis per hari. Beban, panjang masukan katalog, dan model AI dapat membuat kuota ini cepat habis saat dipakai banyak orang. Hash kata sandi menggunakan PBKDF2 310.000 iterasi melalui Web Crypto; karena CPU Worker Free dibatasi 10 ms, pastikan signup dan login lolos pada deployment akun Anda. Untuk penggunaan produksi yang stabil, Workers Paid memberi batas CPU yang lebih longgar dan mulai dari biaya bulanan $5. Pantau metrik dan error di dashboard Cloudflare.
+
+Kata sandi pada D1 memakai PBKDF2 melalui Web Crypto; akun lokal memakai scrypt. Data akun lokal tidak kompatibel untuk disalin langsung ke D1 dan sengaja tidak dimigrasikan otomatis.
+
 ## Deployment satu server
 
 Deployment yang disediakan memakai Docker Compose, satu proses aplikasi, satu file SQLite di volume persisten, Ollama pada jaringan internal, Caddy untuk HTTPS, dan layanan backup harian. Arsitektur ini sesuai untuk pilot atau penggunaan satu server. Jangan menjalankan beberapa replika aplikasi yang berbagi file SQLite.

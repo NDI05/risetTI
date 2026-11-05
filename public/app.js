@@ -75,18 +75,24 @@ function setBusy(button, busy, label) {
 
 function setAiStatus(status) {
   const pill = $("#ai-status");
+  const provider = status.provider || "Ollama lokal";
+  const providerLabel = provider === "Cloudflare Workers AI" ? "Workers AI" : "AI lokal";
   state.aiAvailable = Boolean(status.available);
   pill.classList.toggle("ready", state.aiAvailable);
   pill.classList.toggle("offline", !status.connected);
   pill.title = status.message;
   pill.querySelector("span:last-child").textContent = state.aiAvailable
-    ? "AI lokal siap" : status.connected ? "Model lokal belum tersedia" : "AI lokal tidak tersedia";
+    ? `${providerLabel} siap` : status.connected ? "Model AI belum tersedia" : "AI tidak tersedia";
   $("#hero-ai-status").textContent = state.aiAvailable ? "Siap digunakan" : status.connected ? "Model belum tersedia" : "Tidak terhubung";
-  $("#hero-ai-copy").textContent = state.aiAvailable ? "Pencarian dibantu AI di komputer Anda." : "Pencarian katalog tetap tersedia saat AI offline.";
+  $("#hero-ai-copy").textContent = state.aiAvailable ? `Pencarian dibantu ${provider}.` : "Pencarian katalog tetap tersedia saat AI offline.";
   const inline = $("#ai-inline-status");
   inline.textContent = status.message;
   inline.classList.toggle("available", state.aiAvailable);
   inline.classList.toggle("unavailable", !state.aiAvailable);
+  const privacyNote = $("#ai-provider-note");
+  if (privacyNote) privacyNote.textContent = status.localOnly === false
+    ? "Pertanyaan diproses oleh penyedia AI pada deployment ini."
+    : "Pertanyaan diproses oleh Ollama di komputer lokal.";
   $$('[data-needs-ai]').forEach((button) => { button.disabled = !state.aiAvailable; });
   $("#summarize-button").disabled = !state.aiAvailable || state.selectedRefs.size === 0;
   updateIntakeControls();
@@ -94,7 +100,7 @@ function setAiStatus(status) {
 
 async function loadAiStatus() {
   try { setAiStatus(await api("/api/ai/status")); }
-  catch { setAiStatus({ available: false, connected: false, message: "Status Ollama belum dapat dibaca." }); }
+  catch { setAiStatus({ available: false, connected: false, message: "Status penyedia AI belum dapat dibaca." }); }
 }
 
 async function loadSession() {
@@ -284,7 +290,7 @@ function summaryMarkup(result) {
 }
 
 async function runSummary() {
-  if (!state.aiAvailable) return showToast("Bantuan AI lokal belum tersedia. Anda tetap dapat membaca dan membandingkan referensi secara manual.", true);
+  if (!state.aiAvailable) return showToast("Bantuan AI belum tersedia. Anda tetap dapat membaca dan membandingkan referensi secara manual.", true);
   const ids = [...state.selectedRefs].slice(0, 8);
   if (!ids.length) return;
   const button = $("#summarize-button");
@@ -305,9 +311,9 @@ async function runKeywordSuggestions() {
   if (!state.user) {
     state.pendingAiQuestion = question;
     openAuth("login");
-    return showToast("Masuk atau buat akun untuk meminta bantuan AI lokal.");
+    return showToast("Masuk atau buat akun untuk meminta bantuan AI.");
   }
-  if (!state.aiAvailable) return showToast("Ollama atau model Gemma lokal belum siap. Anda tetap dapat memakai filter katalog secara manual.", true);
+  if (!state.aiAvailable) return showToast("Penyedia AI belum siap. Anda tetap dapat memakai filter katalog secara manual.", true);
   const button = $("#ai-search-submit");
   setBusy(button, true, "Menyiapkan…");
   try {
@@ -431,7 +437,7 @@ function addIntakeQuestion(question = "", custom = true) {
 }
 
 async function runIntakeQuestionGeneration() {
-  if (!state.aiAvailable) return showToast("Bantuan AI lokal belum tersedia. Anda tetap dapat menambah pertanyaan sendiri.", true);
+  if (!state.aiAvailable) return showToast("Bantuan AI belum tersedia. Anda tetap dapat menambah pertanyaan sendiri.", true);
   syncIntakeQuestions();
   const title = $("#intake-title").value.trim();
   if (!title) return $("#intake-title").focus();
@@ -499,7 +505,7 @@ function renderIdeaResult() {
 }
 
 async function runIdeaDraft() {
-  if (!state.aiAvailable) return showToast("Bantuan AI lokal belum tersedia. Anda tetap dapat merapikan gagasan secara manual.", true);
+  if (!state.aiAvailable) return showToast("Bantuan AI belum tersedia. Anda tetap dapat merapikan gagasan secara manual.", true);
   syncIntakeQuestions();
   const title = $("#intake-title").value.trim();
   if (!title) { $("#intake-title").focus(); return showToast("Tulis ide awal terlebih dahulu.", true); }

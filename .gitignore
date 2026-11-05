@@ -14,3 +14,7 @@ tmp/
 *.pdf
 *.pptx
 .DS_Store
+.wrangler/
+.dev.vars*
+!.dev.vars.example
+worker-configuration.d.ts
