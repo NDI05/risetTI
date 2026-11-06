@@ -48,13 +48,13 @@ npx wrangler secret put AUTH_RATE_LIMIT_SECRET
 
 Jalankan `npm run cf:deploy`. Perintah tersebut menerapkan migrasi D1 lalu mengunggah Worker beserta aset web. Migrasi membuat tabel dan menambahkan **32 rekaman katalog awal** dari ETD UGM. Migrasi tidak memindahkan akun, shortlist, atau ide yang tersimpan di SQLite lokal.
 
-Jika katalog cloud perlu diperluas untuk uji pencarian, skrip OpenAlex yang sama dapat menulis metadata artikel CC-BY langsung ke D1. Akun Cloudflare harus sudah terautentikasi di Wrangler dan database D1 sudah termigrasi:
+Jika katalog cloud perlu diperluas untuk uji pencarian, importer dapat mengambil artikel jurnal yang abstraknya tersedia dan secara eksplisit berlisensi CC BY 4.0 dari Crossref, lalu menulisnya langsung ke D1. Jalur ini tidak memerlukan API key; akun Cloudflare harus sudah terautentikasi di Wrangler dan database D1 sudah termigrasi:
 
 ```sh
-npm run import:openalex -- --target cloudflare --limit 3000
+npm run import:catalog -- --source crossref --target cloudflare --limit 3000
 ```
 
-Skrip mengirim batch kecil, mempertahankan rekaman yang sudah ada, dan mengabaikan ID OpenAlex duplikat. Batas target maksimal 100.000 rekaman per proses. Hanya metadata dan abstrak berlisensi CC-BY yang diterima; akun serta ide mahasiswa tidak disentuh. OpenAlex dapat meminta API key atau membatasi kecepatan permintaan; set `OPENALEX_API_KEY` di environment terminal bila akun Anda memilikinya.
+Skrip mengirim batch kecil, mencatat nama jurnal dan DOI, mempertahankan rekaman yang sudah ada, dan mengabaikan DOI duplikat. Batas target maksimal 100.000 rekaman per proses. Akun serta ide mahasiswa tidak disentuh. OpenAlex juga tersedia lewat `--source openalex`; API key gratis yang sudah diverifikasi diperlukan untuk kueri skala besar.
 
 ### Membuat admin pertama
 
