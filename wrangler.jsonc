@@ -13,6 +13,7 @@
     {
       "binding": "DB",
       "database_name": "risetti-db",
+      "database_id": "16a5e8fc-bf2f-46fc-a0f5-b004952b68ff",
       "migrations_dir": "migrations"
     }
   ],
