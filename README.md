@@ -86,7 +86,7 @@ npm run cf:typegen
 npm run cf:typecheck
 ```
 
-Workers Free memiliki batas CPU 10 ms per request; Workers AI gratis memiliki alokasi 10.000 Neurons per hari, dan penggunaan yang melebihi batas harian berhenti sampai kuota direset. D1 Free mencakup 5 juta baris terbaca dan 100.000 baris tertulis per hari. Beban, panjang masukan katalog, dan model AI dapat membuat kuota ini cepat habis saat dipakai banyak orang. Hash kata sandi menggunakan PBKDF2 310.000 iterasi melalui Web Crypto; karena CPU Worker Free dibatasi 10 ms, pastikan signup dan login lolos pada deployment akun Anda. Untuk penggunaan produksi yang stabil, Workers Paid memberi batas CPU yang lebih longgar dan mulai dari biaya bulanan $5. Pantau metrik dan error di dashboard Cloudflare.
+Workers Free memiliki batas CPU 10 ms per request; Workers AI gratis memiliki alokasi 10.000 Neurons per hari, dan penggunaan yang melebihi batas harian berhenti sampai kuota direset. D1 Free mencakup 5 juta baris terbaca dan 100.000 baris tertulis per hari. Beban, panjang masukan katalog, dan model AI dapat membuat kuota ini cepat habis saat dipakai banyak orang. Hash kata sandi Workers memakai PBKDF2-SHA256 100.000 iterasi, batas maksimum yang didukung runtime Cloudflare Workers. Uji alur akun pada deployment sebelum dipakai. Untuk penggunaan produksi yang stabil, Workers Paid memberi batas CPU yang lebih longgar dan mulai dari biaya bulanan $5. Pantau metrik dan error di dashboard Cloudflare.
 
 Kata sandi pada D1 memakai PBKDF2 melalui Web Crypto; akun lokal memakai scrypt. Data akun lokal tidak kompatibel untuk disalin langsung ke D1 dan sengaja tidak dimigrasikan otomatis.
 

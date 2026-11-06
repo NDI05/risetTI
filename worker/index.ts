@@ -16,6 +16,7 @@ interface Context { request: Request; env: Env; url: URL; auth: AuthContext | nu
 
 const SESSION_COOKIE = "risetti.sid";
 const SESSION_LIFETIME_MS = 7 * 24 * 60 * 60 * 1000;
+const PASSWORD_HASH_ITERATIONS = 100_000;
 const mutating = new Set(["POST", "PUT", "PATCH", "DELETE"]);
 const sectionKeys = ["problem", "context", "dataSources", "method", "technologies", "technicalNeeds", "timeResources", "risksValidation"] as const;
 
@@ -71,19 +72,20 @@ function safeEqual(left: string, right: string): boolean {
 async function hashPassword(password: string): Promise<string> {
   const salt = crypto.getRandomValues(new Uint8Array(16));
   const material = await crypto.subtle.importKey("raw", new TextEncoder().encode(password), "PBKDF2", false, ["deriveBits"]);
-  const bits = await crypto.subtle.deriveBits({ name: "PBKDF2", hash: "SHA-256", salt, iterations: 310_000 }, material, 256);
-  return `pbkdf2$sha256$310000$${base64url(salt)}$${base64url(new Uint8Array(bits))}`;
+  const bits = await crypto.subtle.deriveBits({ name: "PBKDF2", hash: "SHA-256", salt, iterations: PASSWORD_HASH_ITERATIONS }, material, 256);
+  return `pbkdf2$sha256$${PASSWORD_HASH_ITERATIONS}$${base64url(salt)}$${base64url(new Uint8Array(bits))}`;
 }
 
 async function verifyPassword(password: string, stored: string): Promise<boolean> {
   const [scheme, hash, iterationText, saltText, expectedText] = stored.split("$");
-  if (scheme !== "pbkdf2" || hash !== "sha256" || iterationText !== "310000" || !saltText || !expectedText) return false;
+  const iterations = Number(iterationText);
+  if (scheme !== "pbkdf2" || hash !== "sha256" || !Number.isInteger(iterations) || iterations < 1 || iterations > PASSWORD_HASH_ITERATIONS || !saltText || !expectedText) return false;
   try {
     const decode = (value: string) => Uint8Array.from(atob(value.replaceAll("-", "+").replaceAll("_", "/") + "===".slice((value.length + 3) % 4)), (char) => char.charCodeAt(0));
     const salt = decode(saltText);
     const expected = decode(expectedText);
     const material = await crypto.subtle.importKey("raw", new TextEncoder().encode(password), "PBKDF2", false, ["deriveBits"]);
-    const bits = await crypto.subtle.deriveBits({ name: "PBKDF2", hash: "SHA-256", salt, iterations: 310_000 }, material, 256);
+    const bits = await crypto.subtle.deriveBits({ name: "PBKDF2", hash: "SHA-256", salt, iterations }, material, 256);
     const actual = base64url(new Uint8Array(bits));
     return safeEqual(actual, expectedText) && expected.length === 32;
   } catch { return false; }
