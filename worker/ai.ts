@@ -54,7 +54,7 @@ function citationIndexes(value: unknown, field: string, count: number): number[]
 
 async function generate(env: AiEnvironment, messages: Message[], schema: Record<string, unknown>): Promise<unknown> {
   try {
-    const response = await env.AI.run(env.AI_MODEL || "@cf/meta/llama-3.3-70b-instruct-fp8-fast", {
+    const response = await env.AI.run(env.AI_MODEL || "@cf/meta/llama-3.1-8b-instruct-fast", {
       messages,
       response_format: { type: "json_schema", json_schema: schema },
       max_tokens: 1800,

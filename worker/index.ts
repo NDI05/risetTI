@@ -313,7 +313,20 @@ async function handleApi(context: Context): Promise<Response> {
     return empty();
   }
 
-  if (method === "GET" && pathname === "/api/ai/status") return json({ available: true, connected: true, model: env.AI_MODEL || "@cf/meta/llama-3.3-70b-instruct-fp8-fast", provider: "Cloudflare Workers AI", message: "Konfigurasi Workers AI tersedia; permintaan mengikuti kuota dan ketersediaan model. Periksa dan sunting setiap draf sebelum menyimpannya.", localOnly: false });
+  if (method === "GET" && pathname === "/api/ai/status") {
+    const model = env.AI_MODEL || "@cf/meta/llama-3.1-8b-instruct-fast";
+    const configured = Boolean(env.AI && typeof env.AI.run === "function");
+    return json({
+      available: configured,
+      connected: configured,
+      model,
+      provider: "Cloudflare Workers AI",
+      message: configured
+        ? "Model Workers AI terkonfigurasi. Inferensi memakai kuota Cloudflare; uji respons dengan fitur AI sebelum menyimpan draf."
+        : "Binding atau nama model Workers AI belum dikonfigurasi.",
+      localOnly: false,
+    });
+  }
   if (method === "POST" && pathname === "/api/ai/search-suggestions") {
     requireUser(context);
     const body = await requestBody(request);

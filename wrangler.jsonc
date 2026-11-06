@@ -17,9 +17,9 @@
       "migrations_dir": "migrations"
     }
   ],
-  "ai": { "binding": "AI" },
+  "ai": { "binding": "AI", "remote": true },
   "vars": {
-    "AI_MODEL": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+    "AI_MODEL": "@cf/meta/llama-3.1-8b-instruct-fast"
   },
   "observability": { "enabled": true }
 }

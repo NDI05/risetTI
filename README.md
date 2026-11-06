@@ -27,7 +27,7 @@ Jika Ollama atau model tidak tersedia, pencarian katalog, shortlist, dan pengisi
 
 ## Deployment Cloudflare Workers + D1 + Workers AI
 
-Cloudflare memakai backend Worker tersendiri agar API tetap kompatibel dengan antarmuka yang sama. Berkas statis disajikan oleh Workers Assets, data berada di D1, dan model default adalah `@cf/meta/llama-3.3-70b-instruct-fp8-fast`. Jalur Express, SQLite, dan Ollama lokal tetap tersedia untuk pengembangan di Mac.
+Cloudflare memakai backend Worker tersendiri agar API tetap kompatibel dengan antarmuka yang sama. Berkas statis disajikan oleh Workers Assets, data berada di D1, dan model default adalah `@cf/meta/llama-3.1-8b-instruct-fast` untuk menekan biaya inferensi sambil mempertahankan JSON Mode. Jalur Express, SQLite, dan Ollama lokal tetap tersedia untuk pengembangan di Mac.
 
 ### Persiapan akun dan database
 
